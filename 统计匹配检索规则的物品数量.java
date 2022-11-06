@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -10,6 +8,10 @@ import java.util.stream.Stream;
  * 1773. 统计匹配检索规则的物品数量
  * 
  * 简单
+ * 
+ * https://leetcode.cn/problems/count-items-matching-a-rule/
+ * 
+ * Created by kaic on 2022/10/29
  */
 public class 统计匹配检索规则的物品数量 {
 

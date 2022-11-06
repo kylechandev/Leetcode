@@ -7,8 +7,14 @@
     },
 
     "files.exclude": {
-q
+
     //不需要显示的文件
+
+    ".gitignore": true,
+
+    "LICENSE": true,
+
+    "README.md": true,
 
     "*.jar": true,
 

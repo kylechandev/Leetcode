@@ -8,6 +8,8 @@ import java.util.Arrays;
  * 数组、尾部指针
  * 
  * https://leetcode.cn/problems/merge-sorted-array/
+ * 
+ * Created by kaic on 2022/10/29
  */
 public class 合并两个有序数组 {
 
