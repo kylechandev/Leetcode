@@ -1,7 +1,5 @@
 package 小灰.栈和队列;
 
-import java.util.Hashtable;
-
 /**
  * 队列
  * 
