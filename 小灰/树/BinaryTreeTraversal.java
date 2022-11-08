@@ -1,6 +1,7 @@
 package 小灰.树;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -249,6 +250,46 @@ public class BinaryTreeTraversal {
         }
     }
 
+    /**
+     * 层序遍历 - 通过队列实现
+     */
+    public static void levelOrderTraversal(TreeNode rootNode) {
+        // add 增加一个元索 如果队列已满，则抛出一个IIIegaISlabEepeplian异常
+        // remove 移除并返回队列头部的元素 如果队列为空，则抛出一个NoSuchElementException异常
+        // element 返回队列头部的元素 如果队列为空，则抛出一个NoSuchElementException异常
+        // offer 添加一个元素并返回true 如果队列已满，则返回false
+        // poll 移除并返问队列头部的元素 如果队列为空，则返回null
+        // peek 返回队列头部的元素 如果队列为空，则返回null
+        // put 添加一个元素 如果队列满，则阻塞
+        // take 移除并返回队列头部的元素 如果队列为空，则阻塞
+        // drainTo(list) 一次性取出队列所有元素
+
+        // 知识点： remove、element、offer 、poll、peek 其实是属于Queue接口
+
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+
+        // 入队列 根节点
+        queue.offer(rootNode);
+
+        while (!queue.isEmpty()) {
+            // 出队列
+            TreeNode header = queue.poll();
+            System.out.print(header.data + " ");
+
+            // 依此入队列 左节点
+            TreeNode left = header.left;
+            if (left != null) {
+                queue.offer(left);
+            }
+
+            // 依此入队列 右节点
+            TreeNode right = header.right;
+            if (right != null) {
+                queue.offer(right);
+            }
+        }
+    }
+
     private static class TreeNode {
         private TreeNode left;
         private TreeNode right;
@@ -302,6 +343,11 @@ public class BinaryTreeTraversal {
 
         System.out.println("后序遍历（Stack）2：");
         postOrderTraversalByStack2(treeNode);
+        System.out.println();
+        System.out.println();
+
+        System.out.println("层序遍历：");
+        levelOrderTraversal(treeNode);
         System.out.println();
         System.out.println();
     }
