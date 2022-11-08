@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-08 21:01:58
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-08 22:39:18
+ * @LastEditTime: 2022-11-08 22:43:57
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 /**
  * 冒泡排序
+ * 
+ * 时间复杂度：O(n²)
  * 
  * 具有升级版本：【鸡尾酒排序 - 双向冒泡排序（先从左到右，再从右到左，一直来回，适合大部分数据已经有序的情况，可以有效减少排序次数）】
  */
