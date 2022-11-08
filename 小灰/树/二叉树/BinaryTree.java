@@ -1,4 +1,4 @@
-package 小灰.树;
+package 小灰.树.二叉树;
 
 /**
  * 二叉树
@@ -8,6 +8,24 @@ package 小灰.树;
  * 
  * 实现方式2：数组 - 不适合稀疏二叉树，浪费空间
  * 按层级顺序将节点数据存储顺序存储到数组，空缺的孩子节点在数组中对应位置也空出
+ * 
+ * 
+ * 【完全二叉树】
+ * 若设二叉树的深度为h，除第 h 层外，其它各层 (1~h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在`最左边`，这就是完全二叉树
+ * 
+ * 【叶子节点】
+ * 没有子节点的节点
+ * 
+ * 
+ * 【父节点 / 子节点 位置查询】
+ * 已知 parentIndex
+ * leftChildIndex = parentIndex * 2 + 1
+ * rightChildIndex = parentIndex * 2 + 2
+ * 
+ * 已知 leftChildIndex 或者 rightChildIndex 其中任意一个（以下简称为childIndex）
+ * parentIndex = (childIndex - 1) / 2
+ * 【这里是`/`运算，取的商，不是余数，所以不管是左还是右子节点都可以通过一个公式计算得到父节点】
+ * 
  * 
  * 
  * 【二叉树的应用】
@@ -36,7 +54,7 @@ package 小灰.树;
  * 
  * 【还有 - 二叉堆】
  * 
- * 像二叉排序树一样，[但是只要求父节点比它的左右孩子大即可]
+ * 像二叉排序树一样，[但是只要求父节点比它的左右孩子大]
  */
 public class BinaryTree {
     public static void main(String[] args) {

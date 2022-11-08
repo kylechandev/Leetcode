@@ -1,4 +1,4 @@
-package 小灰.树;
+package 小灰.树.二叉树;
 
 import java.util.LinkedList;
 import java.util.Queue;
