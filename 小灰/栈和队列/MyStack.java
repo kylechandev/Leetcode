@@ -1,3 +1,10 @@
+/*
+ * @Author: kaic
+ * @Date: 2022-11-07 11:44:36
+ * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2022-11-08 20:55:22
+ * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
 package 小灰.栈和队列;
 
 /**
