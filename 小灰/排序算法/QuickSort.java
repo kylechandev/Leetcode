@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-08 22:40:56
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-09 20:28:30
+ * @LastEditTime: 2022-11-09 21:11:24
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Stack;
 
 /**
- * 快速排序
+ * 快速排序 - 基于元素之间的比较来进行排序
  * 
  * 平均时间复杂度：O(nlogn) -> 每一轮需要把数组所有元素都遍历一遍，遍历一共有logn轮
  * 最坏情况下的时间复杂度 是O(n²)
