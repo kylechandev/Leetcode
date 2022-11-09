@@ -113,7 +113,7 @@ public class PriorityQueue {
                 childIndex++;
             }
 
-            if (array[parentIndex] >= array[childIndex]) {
+            if (tempParent >= array[childIndex]) {
                 // 不用下浮了
                 break;
             }

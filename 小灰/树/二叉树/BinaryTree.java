@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 22:52:09
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-08 20:54:53
+ * @LastEditTime: 2022-11-09 20:32:15
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.树.二叉树;
@@ -39,7 +39,7 @@ package 小灰.树.二叉树;
  * 
  * 1、查找
  * 
- * 【二叉查找树】 - 依靠比较大小来逐步查找（类似于二分查找） - 时间复杂度 O(logn)
+ * 【二叉查找树/又叫二叉排序树】 - 依靠比较大小来逐步查找（类似于二分查找） - 时间复杂度 O(logn)
  * - 左子树的值都比根节点的值小
  * - 右子树的值都比根节点的值大
  * - 左右子树也都是二叉查找树
