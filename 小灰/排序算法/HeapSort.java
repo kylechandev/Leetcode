@@ -10,7 +10,7 @@ package 小灰.排序算法;
 import java.util.Arrays;
 
 /**
- * 堆排序
+ * 堆排序 - O(nlogn)
  */
 public class HeapSort {
 
