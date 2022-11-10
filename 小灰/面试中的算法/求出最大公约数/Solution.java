@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 17:11:22
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 17:58:28
+ * @LastEditTime: 2022-11-10 18:05:51
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.求出最大公约数;
@@ -69,10 +69,15 @@ public class Solution {
     }
 
     public static int gcd(int a, int b) {
+        // 算法同 getGreatestCommonDivisor2
+        // 只是这里直接假设a为小值，b为大值，然后进行递归
+
         if (a == 0) {
+            // 递归结束条件：假设的`小数==0`
             return b;
         }
 
+        // 如果首次传入的a大b小，第一次递归就相当于交换a和b的值
         return gcd(b % a, a);
     }
 
