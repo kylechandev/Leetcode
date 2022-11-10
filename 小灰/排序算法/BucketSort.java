@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 09:02:29
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 10:17:15
+ * @LastEditTime: 2022-11-10 10:27:36
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -13,11 +13,21 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 /**
- * 桶排序
+ * 桶排序 - `非`元素比较的排序 - 稳定（对于不交换相同元素） 不绝对稳定（对于桶内元素分布不均匀时）
+ * 类似于计数排序，桶排序需要创建若干个桶来协助排序
  * 
  * 可以做到线性时间复杂度：O(n)
  * 
- * 类似于计数排序，桶排序需要创建若干个桶来协助排序
+ * 时间复杂度（设数组大小n，桶数量m）：
+ * 1、计算最大值最小值：O(n)
+ * 2、初始化桶：O(m)
+ * 3、把原数组元素放入对应的桶中：O(n)
+ * 4、对桶内的元素进行排序：O(n) （内部的排序任意使用，使用JDK内置的排序算法时间复杂度为：O(nlogn)，这个不计入桶排序的时间复杂度）
+ * 5、输出最后的排序数组：O(n)
+ * 综合起来时间复杂度为：O(n+m)
+ * 最坏时间复杂度：O((n+m)logn)
+ * 
+ * 空间复杂度同理：O(n+m)
  */
 public class BucketSort {
 
@@ -88,7 +98,8 @@ public class BucketSort {
         for (int i = 0; i < bucketCount; i++) {
             LinkedList<Double> bucket = bucketList.get(i);
             if (bucket.size() > 1) {
-                // 内部采用归并排序
+                // 内部采用归并排序 或者 TimeSort
+                // 时间复杂度为：O(nlogn)
                 Collections.sort(bucket);
             }
         }

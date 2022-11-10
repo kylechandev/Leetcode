@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 21:15:43
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 09:10:21
+ * @LastEditTime: 2022-11-10 10:26:18
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -10,7 +10,7 @@ package 小灰.排序算法;
 import java.util.Arrays;
 
 /**
- * 计数排序 - `非`元素比较的排序
+ * 计数排序 - `非`元素比较的排序 - 稳定
  * 
  * 可以做到线性时间复杂度：O(n)
  * 

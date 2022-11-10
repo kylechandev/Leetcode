@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-08 21:01:58
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-08 22:43:57
+ * @LastEditTime: 2022-11-10 10:29:12
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -10,11 +10,13 @@ package 小灰.排序算法;
 import java.util.Arrays;
 
 /**
- * 冒泡排序 - 基于元素之间的比较来进行排序
+ * 冒泡排序 - 基于元素之间的比较来进行排序 - 稳定
  * 
  * 时间复杂度：O(n²)
+ * 最坏时间复杂度：O(n²)
+ * 空间复杂度：O(1)
  * 
- * 具有升级版本：【鸡尾酒排序 - 双向冒泡排序（先从左到右，再从右到左，一直来回，适合大部分数据已经有序的情况，可以有效减少排序次数）】
+ * 具有升级版本：【鸡尾酒排序 - 双向冒泡排序 - 稳定（先从左到右，再从右到左，一直来回，适合大部分数据已经有序的情况，可以有效减少排序次数）】
  */
 public class BubbleSort {
 

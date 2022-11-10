@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 20:29:38
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 09:06:55
+ * @LastEditTime: 2022-11-10 10:26:39
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -10,9 +10,12 @@ package 小灰.排序算法;
 import java.util.Arrays;
 
 /**
- * 堆排序 - 基于元素之间的比较来进行排序
+ * 堆排序 - 基于元素之间的比较来进行排序 - 不稳定
  * 
  * 时间复杂度：O(nlogn)
+ * 最坏时间复杂度：O(nlogn)
+ * 
+ * 空间复杂度：O(1)
  */
 public class HeapSort {
 
