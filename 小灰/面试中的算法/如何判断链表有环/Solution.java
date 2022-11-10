@@ -2,12 +2,14 @@
  * @Author: kaic
  * @Date: 2022-11-10 12:54:39
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 14:02:27
+ * @LastEditTime: 2022-11-10 14:21:28
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.如何判断链表有环;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 /**
  * 如何判断链表有环
@@ -131,6 +133,87 @@ public class Solution {
     }
 
     /**
+     * 求环长(借助 HashMap 的解法)
+     */
+    public static int cycleLength1(Node head) {
+        // 存放节点出现的次数
+        Map<Node, Integer> map = new HashMap<Node, Integer>();
+
+        // 环长
+        int length = 0;
+
+        Node temp = head;
+
+        while (temp != null) {
+            if (map.containsKey(temp)) {
+                // 遍历次数+1
+                map.put(temp, map.get(temp) + 1);
+            } else {
+                // 首次遍历
+                map.put(temp, 1);
+            }
+
+            // 遍历了2次
+            if (map.get(temp) == 2) {
+                // 第二次遍历某个节点，开始计算环的长度
+                length++;
+            }
+
+            // 遍历了3次
+            if (map.get(temp) == 3) {
+                // 第三次遍历某个节点，环长度计算完成
+                break;
+
+            }
+
+            // 继续遍历
+            temp = temp.next;
+        }
+
+        // 返回长度
+        return length;
+    }
+
+    /**
+     * 求环长(借助 双指针[快慢指针] 的解法)
+     */
+    public static int cycleLength2(Node head) {
+        // 创建两个快慢指针
+        Node fast = head;
+        Node slow = head;
+
+        boolean meet = false;
+        int length = 0;
+
+        // 只需要判断fast存在即可（fast存在，那么slow是必定存在的）
+        while (fast != null && fast.next != null) {
+            // 开始移动
+            fast = fast.next.next; // 快指针移动2个位置
+            slow = slow.next; // 慢指针移动1个位置
+
+            // 开始判断是否相遇
+            if (slow == fast) {
+                // 相遇了
+                meet = true;
+                // length == 0 时表示第一次相遇
+                if (length != 0) {
+                    // 二次相遇
+                    // 长度计算完毕（也就是慢指针走的次数）
+                    break;
+                }
+            }
+
+            if (meet) {
+                // 已经相遇过了，继续向前走，长度+1
+                length++;
+            }
+        }
+
+        // 环长就是第二次相遇时，慢指针走的步数
+        return length;
+    }
+
+    /**
      * 链表节点
      */
     private static class Node {
@@ -160,5 +243,8 @@ public class Solution {
         System.out.println("是否有环1：" + isCycle1(node1));
         System.out.println("是否有环2：" + isCycle2(node1));
         System.out.println("是否有环3：" + isCycle3(node1));
+
+        System.out.println("环长度1：" + cycleLength1(node1));
+        System.out.println("环长度2：" + cycleLength2(node1));
     }
 }
