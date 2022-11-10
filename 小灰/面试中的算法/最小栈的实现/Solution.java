@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 16:54:50
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 17:06:32
+ * @LastEditTime: 2022-11-10 17:09:46
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.最小栈的实现;
@@ -22,6 +22,9 @@ import java.util.Stack;
 public class Solution {
 
     private static Stack<Integer> stack = new Stack<Integer>();
+    // 解决思路：
+    // 设置一个最小栈，stack入栈时将小值同时入栈到minStack中
+    // 然后取最小值时，直接从minStack栈中弹出栈顶元素
     private static Stack<Integer> minStack = new Stack<Integer>();
 
     /**
