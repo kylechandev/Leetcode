@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 20:29:38
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 09:05:44
+ * @LastEditTime: 2022-11-10 09:06:55
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -24,7 +24,9 @@ public class HeapSort {
         // 因为是依此首尾交换，所以总共的交换次数就是`array.length - 1`，并且每次交换并下浮后，最后的那个数就是已经排序好的数
         // for (int i = array.length - 1; i > 0; i--) // 从后往前扫
         for (int i = 0; i < array.length - 1; i++) {
+            // 删除第一个元素（让第一个元素和最后一个元素交换位置，并不是真正的删除）
             int temp = array[0];
+            // 每次循环可以确定最后一个元素已经排序完成，无需再次判断，所以`array.length - 1 - i`
             int last = array[array.length - 1 - i];
             array[0] = last;
             array[array.length - 1 - i] = temp;
