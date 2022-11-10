@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 09:02:29
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 10:09:47
+ * @LastEditTime: 2022-11-10 10:17:15
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -70,6 +70,14 @@ public class BucketSort {
             // 计算桶号
             int num = (int) Math.floor((array[i] - min) / length); // 不减`min`其实也可以，`主要是对桶元素大小范围的取整操作`
             System.out.println("桶号：" + num);
+            // 【❌ 错误的计算桶号方式1】
+            // 直接拿数组元素对桶数取余：array[i] % bucketCount
+            // 这样虽然可以让每个元素都落入到有效的桶中，但是这样存在一个严重的问题，就是每个桶中的元素都不一定在桶的有效元素大小范围内了，直接失去了桶排序的优势
+
+            // 【❌ 错误的计算桶号方式2】
+            // 直接拿数组元素对数组大小取整：array[i] / array.length
+            // 绝对不可取，如果桶的数量小于array.length，那么不仅会存在错误方式1的问题，还会发生IndexOutOfRangeException
+
             // 拿到桶
             LinkedList<Double> bucket = bucketList.get(num);
             // 把元素放入对应的桶中
