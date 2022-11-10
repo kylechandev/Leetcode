@@ -1,0 +1,164 @@
+/*
+ * @Author: kaic
+ * @Date: 2022-11-10 12:54:39
+ * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2022-11-10 14:02:27
+ * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
+package 小灰.面试中的算法.如何判断链表有环;
+
+import java.util.HashSet;
+
+/**
+ * 如何判断链表有环
+ */
+public class Solution {
+
+    /**
+     * 两次遍历 解法
+     * 
+     * 时间复杂度：O(n²)
+     * 空间复杂度：O(1)
+     */
+    public static boolean isCycle1(Node head) {
+        if (head == null) {
+            return false;
+        }
+
+        boolean result = false;
+
+        // 开始遍历
+        Node temp = head;
+        outer: while (temp != null) {
+            // 内循环从头开始遍历到新节点的上一个节点
+            Node compare = head;
+            while (compare != null && compare.next != temp) { // 遍历到新节点的前一个为止 compare.next != temp
+                if (compare == temp) {
+                    // 如果链表有环，则可以从头节点遍历到新节点
+                    // 否则永远不可能遍历到新节点
+                    result = true;
+
+                    // 直接退出外循环
+                    break outer;
+                }
+
+                // 继续内循环
+                compare = compare.next;
+            }
+
+            // 退出外循环
+            // if (result) {
+            // break;
+            // }
+
+            // 继续遍历
+            temp = temp.next;
+        }
+
+        return result;
+    }
+
+    /**
+     * HashSet 解法
+     * 
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
+     */
+    public static boolean isCycle2(Node head) {
+        if (head == null) {
+            return false;
+        }
+
+        boolean result = false;
+
+        // 创建一个Set，用来保存遍历过的节点
+        HashSet<Integer> set = new HashSet<>();
+
+        // 开始遍历链表
+        Node temp = head;
+        while (temp != null) {
+            if (set.contains(temp.data)) {
+                // 已经遍历过该节点，说明有环
+                // 并且当前遍历到的temp节点就是链表环的起点
+                result = true;
+                break;
+            }
+
+            // 保存这次遍历的节点
+            set.add(temp.data);
+
+            // 继续遍历
+            temp = temp.next;
+        }
+
+        return result;
+    }
+
+    /**
+     * 双指针（快慢指针） 解法
+     * 
+     * 快指针每次向前移动2个位置
+     * 慢指针每次向前移动1个位置
+     * 
+     * 
+     * 环形跑道一样，一个人跑的快一个人跑的慢，那么必定会有一个时刻两人相遇
+     * 
+     * 
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
+     */
+    public static boolean isCycle3(Node head) {
+        boolean result = false;
+
+        // 创建两个快慢指针
+        Node fast = head;
+        Node slow = head;
+
+        // 只需要判断fast存在即可（fast存在，那么slow是必定存在的）
+        while (fast != null && fast.next != null) {
+            // 开始移动
+            fast = fast.next.next; // 快指针移动2个位置
+            slow = slow.next; // 慢指针移动1个位置
+
+            // 开始判断是否相遇
+            if (slow == fast) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 链表节点
+     */
+    private static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node node1 = new Node(5);
+        Node node2 = new Node(3);
+        Node node3 = new Node(7);
+        Node node4 = new Node(2);
+        Node node5 = new Node(6);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        // 环链表
+        node5.next = node2;
+        // node5.next = null;
+
+        System.out.println("是否有环1：" + isCycle1(node1));
+        System.out.println("是否有环2：" + isCycle2(node1));
+        System.out.println("是否有环3：" + isCycle3(node1));
+    }
+}

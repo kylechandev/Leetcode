@@ -16,7 +16,7 @@ public class MyLinkedList {
      * @param data  数据
      * @param index 插入位置
      */
-    public void insert(int data, int index) throws Exception {
+    public void insert(int data, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
@@ -100,7 +100,7 @@ public class MyLinkedList {
      * 
      * @param index 位置
      */
-    private Node get(int index) throws Exception {
+    private Node get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
