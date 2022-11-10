@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 12:54:39
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 14:21:28
+ * @LastEditTime: 2022-11-10 14:50:05
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.如何判断链表有环;
@@ -104,6 +104,8 @@ public class Solution {
      * 
      * 
      * 环形跑道一样，一个人跑的快一个人跑的慢，那么必定会有一个时刻两人相遇
+     * 
+     * 【注意：首次相遇的点，不一定就是入环点，可能是环中的任意一个节点，所以不同通过此来判断环的入环口】
      * 
      * 
      * 时间复杂度：O(n)
@@ -214,6 +216,53 @@ public class Solution {
     }
 
     /**
+     * 判断入环口的位置
+     */
+    public static Map<Node, Integer> cycleEntry(Node head) {
+        // 创建两个快慢指针
+        Node fast = head;
+        Node slow = head;
+
+        boolean meet = false;
+
+        // 只需要判断fast存在即可（fast存在，那么slow是必定存在的）
+        while (fast != null && fast.next != null) {
+            // 开始移动
+            fast = fast.next.next; // 快指针移动2个位置
+            slow = slow.next; // 慢指针移动1个位置
+
+            // 开始判断是否相遇
+            if (slow == fast) {
+                meet = true;
+                break;
+            }
+        }
+
+        if (meet) {
+            // 存在环，开始计算入环口的位置
+
+            // slow回到原点
+            // fast位置不变
+            slow = head;
+
+            // 入口长度
+            int length = 0;
+
+            // 重合后的节点就是环入口
+            while (slow != fast) {
+                slow = slow.next;
+                fast = fast.next;
+
+                length++;
+            }
+
+            return Map.of(slow, length);
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * 链表节点
      */
     private static class Node {
@@ -224,6 +273,11 @@ public class Solution {
             this.data = data;
             this.next = null;
         }
+
+        @Override
+        public String toString() {
+            return "data: " + data + " " + "next-data: " + next.data; // null exception!
+        }
     }
 
     public static void main(String[] args) {
@@ -232,13 +286,17 @@ public class Solution {
         Node node3 = new Node(7);
         Node node4 = new Node(2);
         Node node5 = new Node(6);
+        Node node6 = new Node(8);
+        Node node7 = new Node(1);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
         // 环链表
-        node5.next = node2;
-        // node5.next = null;
+        node7.next = node4;
+        // node7.next = null;
 
         System.out.println("是否有环1：" + isCycle1(node1));
         System.out.println("是否有环2：" + isCycle2(node1));
@@ -246,5 +304,8 @@ public class Solution {
 
         System.out.println("环长度1：" + cycleLength1(node1));
         System.out.println("环长度2：" + cycleLength2(node1));
+
+        Map<Node, Integer> map = cycleEntry(node1);
+        System.out.println("入环口：" + map.keySet() + "，距离：" + map.values());
     }
 }
