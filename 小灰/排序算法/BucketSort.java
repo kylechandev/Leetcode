@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 09:02:29
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 09:02:32
+ * @LastEditTime: 2022-11-10 09:07:37
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 /**
  * 桶排序
+ * 
+ * 
  */
 public class BucketSort {
 

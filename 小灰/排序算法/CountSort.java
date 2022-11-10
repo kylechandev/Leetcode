@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 21:15:43
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 08:59:33
+ * @LastEditTime: 2022-11-10 09:08:49
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 /**
  * 计数排序 - `非`元素比较的排序
+ * 
+ * 可以做到线性时间复杂度：O(n)
  * 
  * 优化后的计数排序属于【稳定排序】
  * 
