@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 21:15:43
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 09:08:49
+ * @LastEditTime: 2022-11-10 09:10:21
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -23,6 +23,8 @@ import java.util.Arrays;
  * 
  * 【缺陷2】
  * 当数列元素不是整数时，也不适合用计数排序（因为都是通过数组下标的，数组下标只能是整数）
+ * 
+ * 对于以上缺陷，使用`桶排序`来解决
  */
 public class CountSort {
 
