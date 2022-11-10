@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 21:15:43
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 08:57:31
+ * @LastEditTime: 2022-11-10 08:59:33
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -15,6 +15,12 @@ import java.util.Arrays;
  * 优化后的计数排序属于【稳定排序】
  * 
  * 适用于【一定范围内的整数排序】，如果取值范围不大，性能甚至可以超过时间复杂度为O(logn)的排序算法
+ * 
+ * 【缺陷1】
+ * 当数列最大和最小值差距过大时，并不适合用计数排序（会浪费很多空间，同时增加查询时间）
+ * 
+ * 【缺陷2】
+ * 当数列元素不是整数时，也不适合用计数排序（因为都是通过数组下标的，数组下标只能是整数）
  */
 public class CountSort {
 
