@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-10 22:37:45
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 14:43:30
+ * @LastEditTime: 2022-11-11 14:45:32
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.寻找全排列的下一个数;
@@ -30,6 +30,8 @@ public class Solution {
      * 怎样排列最小？ - 顺序排列 12345
      * 
      * 数字的顺序和逆序，是全排列中的两种极端情况
+     * 
+     * 3个步骤的时间复杂度都是：O(n)，所以总体的时间复杂度也是：O(n)
      */
     public static Integer getNextNumber(int number) {
         // 获取number是几位数
