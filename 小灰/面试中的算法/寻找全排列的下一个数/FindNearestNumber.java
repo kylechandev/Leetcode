@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-11 14:22:25
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 14:24:59
+ * @LastEditTime: 2022-11-11 17:43:18
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.寻找全排列的下一个数;
@@ -10,6 +10,8 @@ package 小灰.面试中的算法.寻找全排列的下一个数;
 import java.util.Arrays;
 
 /**
+ * 寻找全排列的下一个数
+ * 
  * Created by weimengshu on 2017/8/10.
  */
 public class FindNearestNumber {
