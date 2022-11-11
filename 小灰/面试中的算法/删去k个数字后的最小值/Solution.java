@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-11 14:47:17
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 16:56:46
+ * @LastEditTime: 2022-11-11 16:59:40
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.删去k个数字后的最小值;
@@ -44,7 +44,8 @@ public class Solution {
         while (times > 0) {
             for (int i = 0; i < numberArray.length - 1; i++) {
                 if (numberArray[i] > numberArray[i + 1]) {
-                    // 如果这个数字的后一个数字比它小，那么可以删除这个数字
+                    // 贪心：
+                    // 如果这个数字的后一个数字比它小，那么删除这个数字
                     numberArray = deleteArrayElementAt(numberArray, i);
                     cutted = true;
                     break;
