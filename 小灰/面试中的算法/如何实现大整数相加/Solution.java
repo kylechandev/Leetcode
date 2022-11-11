@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-11 17:00:25
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 17:25:52
+ * @LastEditTime: 2022-11-11 17:31:53
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.如何实现大整数相加;
@@ -18,6 +18,7 @@ public class Solution {
 
     /**
      * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
      */
     public static String getTwoBigNumSum(String a, String b) {
         int aLength = a.length();
@@ -27,6 +28,8 @@ public class Solution {
         int arrayLength = maxLength + 1;
 
         // 1、创建两个数组，长度为最大数字的位数+1（目的是给最高位进位预留），并且整数倒序存放（目的是符合数组从左到右访问的习惯）
+        // ！创建数组只是为了更加直观！
+        // ！也可以不创建这两个数组，直接使用String（先补齐0到首位），然后使用charAt获取到对应位置的数字进行运算，进位使用额外的变量来保存！
         int[] aArray = getArrayFromString(a, arrayLength);
         int[] bArray = getArrayFromString(b, arrayLength);
 
