@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-11 14:47:17
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 16:59:40
+ * @LastEditTime: 2022-11-11 17:26:49
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.删去k个数字后的最小值;
@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 /**
  * 删去k个数字后的最小值 - 贪心算法
+ * 
+ * 时间复杂度：O(n)
  * 
  * 给出一个整数，从该整数中去掉k个数字，要求剩下的数字形成的新整数尽可能小，
  * 其中整数的长度大于或等于k，给出的整数的大小可以超过long类型的数字范围

@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-11 17:00:25
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 17:23:48
+ * @LastEditTime: 2022-11-11 17:25:52
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.如何实现大整数相加;
@@ -16,6 +16,9 @@ import java.util.Arrays;
  */
 public class Solution {
 
+    /**
+     * 时间复杂度：O(n)
+     */
     public static String getTwoBigNumSum(String a, String b) {
         int aLength = a.length();
         int bLength = b.length();
