@@ -2,17 +2,19 @@
  * @Author: kaic
  * @Date: 2022-11-12 15:18:13
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-12 17:02:50
+ * @LastEditTime: 2022-11-12 17:07:12
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.算法的实际应用;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * LRUCache - 最近最少使用算法
  * 
- * 采用数据结构：哈希链表`LinkedHashMap`
+ * 采用数据结构：哈希链表`LinkedHashMap`（但是LinkedHashMap并不是LRU算法）
  */
 public class LRUCache {
 
@@ -154,5 +156,21 @@ public class LRUCache {
         lru.put("3", "3");
 
         System.out.println(lru.get("1"));
+
+        // 【注意】
+        // LinkedHashMpa内部不是LRU算法！
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+        map.put("星期一", 40);
+        map.put("星期二", 43);
+        map.put("星期三", 35);
+        map.put("星期四", 55);
+        map.put("星期五", 45);
+        map.put("星期六", 35);
+        map.put("星期日", 30);
+        // 使用某个元素后，并不会改变他的顺序
+        map.get("星期三");
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
+        }
     }
 }
