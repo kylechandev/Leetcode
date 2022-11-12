@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-11 14:47:17
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-11 17:43:27
+ * @LastEditTime: 2022-11-12 22:54:00
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.删去k个数字后的最小值;
@@ -54,7 +54,7 @@ public class Solution {
                 }
             }
 
-            // 依此求解
+            // 依次求解
             times--;
         }
 

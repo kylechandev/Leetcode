@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 23:07:41
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-08 20:54:59
+ * @LastEditTime: 2022-11-12 22:54:31
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.树.二叉树;
@@ -283,13 +283,13 @@ public class BinaryTreeTraversal {
             TreeNode header = queue.poll();
             System.out.print(header.data + " ");
 
-            // 依此入队列 左节点
+            // 依次入队列 左节点
             TreeNode left = header.left;
             if (left != null) {
                 queue.offer(left);
             }
 
-            // 依此入队列 右节点
+            // 依次入队列 右节点
             TreeNode right = header.right;
             if (right != null) {
                 queue.offer(right);

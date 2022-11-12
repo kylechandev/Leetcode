@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-12 11:01:40
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-12 11:22:31
+ * @LastEditTime: 2022-11-12 22:54:44
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.面试中的算法.寻找缺失的整数;
@@ -61,7 +61,7 @@ public class Solution {
     }
 
     /**
-     * 先算出from到to的累加和，然后依此减去array中的每个数字，剩下的就是丢失的数
+     * 先算出from到to的累加和，然后依次减去array中的每个数字，剩下的就是丢失的数
      * 
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)

@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 20:29:38
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 10:26:39
+ * @LastEditTime: 2022-11-12 22:54:13
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -24,7 +24,7 @@ public class HeapSort {
         buildHeap(array);
 
         // 循环交换集合尾部元素到堆顶，并调节堆产生新的堆顶
-        // 因为是依此首尾交换，所以总共的交换次数就是`array.length - 1`，并且每次交换并下浮后，最后的那个数就是已经排序好的数
+        // 因为是依次首尾交换，所以总共的交换次数就是`array.length - 1`，并且每次交换并下浮后，最后的那个数就是已经排序好的数
         // for (int i = array.length - 1; i > 0; i--) // 从后往前扫
         for (int i = 0; i < array.length - 1; i++) {
             // 删除第一个元素（让第一个元素和最后一个元素交换位置，并不是真正的删除）
@@ -82,7 +82,7 @@ public class HeapSort {
      * @param array 原始数组
      */
     private static void buildHeap(int[] array) {
-        // 从后往前 依此下浮 非叶子节点
+        // 从后往前 依次下浮 非叶子节点
         for (int i = getParentIndex(array.length - 1); i >= 0; i--) {
             downAdjust(array, i, array.length);
         }
