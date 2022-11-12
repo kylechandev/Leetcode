@@ -28,15 +28,15 @@ public class Solution {
      * 
      * 比较低效，因为递归做了许多重复的计算
      * 
-     * @param n 金矿数
-     * @param w 工人数
-     * @param g 每个金矿的含金量
-     * @param p 每个金矿的开采人数
+     * @param goldCount 金矿数
+     * @param manCount  工人数
+     * @param goldArray 每个金矿的含金量
+     * @param manArray  每个金矿的开采人数
      */
-    public static int getBestGoldMining1(int n, int w, int[] g, int[] p) {
+    public static int getBestGoldMining1(int goldCount, int manCount, int[] goldArray, int[] manArray) {
 
         // 结束条件
-        if (n == 0 || w == 0) {
+        if (goldCount == 0 || manCount == 0) {
             // 当 金矿数不够 或者 工人不够 时，结束
             return 0;
         }
@@ -44,12 +44,12 @@ public class Solution {
         // 当工人不够挖矿时
         // 条件：n >= 1 && w < p[n - 1]
         // 条件：矿够 && 人不够挖这个矿
-        if (n >= 1 && w < p[n - 1]) {
+        if (goldCount >= 1 && manCount < manArray[goldCount - 1]) {
             // w 当前剩余的工人数
             // p[n-1] 最后一个矿开采所需的工人数
 
             // 解决：找下一个矿开始开采
-            return getBestGoldMining1(n - 1, w, g, p); // n - 1: 下一个矿
+            return getBestGoldMining1(goldCount - 1, manCount, goldArray, manArray); // n - 1: 下一个矿
         }
 
         // 当工人够挖当前矿时，可以选择挖或者不挖
@@ -58,32 +58,33 @@ public class Solution {
         // 由于上面已经判断过`结束条件`和`不够挖的情况了`，所以这里肯定是够挖的了，可以不用再判断条件了
 
         // 不挖
-        int buwa = getBestGoldMining1(n - 1, w, g, p);
+        int buwa = getBestGoldMining1(goldCount - 1, manCount, goldArray, manArray);
         // 挖
         // n - 1 开始下个矿
         // w - p[n - 1] 挖完后剩下的可用工人
         // g[n - 1] 挖的那个矿的含金量
-        int wa = getBestGoldMining1(n - 1, w - p[n - 1], g, p) + g[n - 1];
+        int wa = getBestGoldMining1(goldCount - 1, manCount - manArray[goldCount - 1], goldArray, manArray)
+                + goldArray[goldCount - 1];
 
         // 返回最大采矿量
         return wa > buwa ? wa : buwa;
     }
 
     /**
-     * 自底向上 - 动态规划
+     * 动态规划 - 自底向上
      * 
      * 时间复杂度：O(wn)
      * 空间复杂度：O(wn)
      * 
-     * @param n 金矿数
-     * @param w 工人数
-     * @param g 每个金矿的含金量
-     * @param p 每个金矿的开采人数
+     * @param goldCount 金矿数
+     * @param manCount  工人数
+     * @param goldArray 每个金矿的含金量
+     * @param manArray  每个金矿的开采人数
      */
-    public static int getBestGoldMining2(int n, int w, int[] g, int[] p) {
+    public static int getBestGoldMining2(int goldCount, int manCount, int[] goldArray, int[] manArray) {
         // 长度+1
         // 在最外层填充0数据，方便后面实际数据的计算
-        int[][] table = new int[n + 1][w + 1];
+        int[][] table = new int[goldCount + 1][manCount + 1];
 
         /*
          * [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -95,9 +96,9 @@ public class Solution {
          */
 
         // 从1开始遍历，最外层的0只是用来辅助计算的
-        for (int i = 1; i <= n; i++) { // 遍历金矿数
-            for (int j = 1; j <= w; j++) { // 遍历工人数
-                if (j < p[i - 1]) {
+        for (int i = 1; i <= goldCount; i++) { // 遍历金矿数
+            for (int j = 1; j <= manCount; j++) { // 遍历工人数
+                if (j < manArray[i - 1]) {
                     // 人数不够挖
                     table[i][j] = table[i - 1][j];
                 } else {
@@ -110,7 +111,7 @@ public class Solution {
                     // p[i-1] 第i个矿所需的工人数（这里也用i-1是因为数组p的下标是从0开始的）
                     // j - p[i-1] 剩下的可用工人数
                     // g[i-1] 第i个矿的含金量（这里也用i-1是因为数组g的下标是从0开始的）
-                    int wa = table[i - 1][j - p[i - 1]] + g[i - 1];
+                    int wa = table[i - 1][j - manArray[i - 1]] + goldArray[i - 1];
 
                     // 返回最大含金量
                     table[i][j] = wa > buwa ? wa : buwa;
@@ -128,28 +129,50 @@ public class Solution {
     }
 
     /**
-     * 递归解法
+     * 动态规划 - 自底向上-优化
      * 
-     * 时间复杂度：O(2^n)
+     * 时间复杂度：O(wn)
+     * 空间复杂度：O(n)
      * 
-     * @param n 金矿数
-     * @param w 工人数
-     * @param g 每个金矿的含金量
-     * @param p 每个金矿的开采人数
+     * 不需要保存整个表格，只需要保存一行即可，因为计算时两个最优子结构都位于它的上一行
+     * 
+     * @param goldCount 金矿数
+     * @param manCount  工人数
+     * @param goldArray 每个金矿的含金量
+     * @param manArray  每个金矿的开采人数
      */
-    public static int getBestGoldMining3(int n, int w, int[] g, int[] p) {
-        return 2;
+    public static int getBestGoldMining3(int goldCount, int manCount, int[] goldArray, int[] manArray) {
+        // 长度+1，为了方便辅助后面实际计算
+        int[] table = new int[manCount + 1]; // 只保存一行（这个数组，既表示当前计算的行，也表示已经计算过的上一行）
+
+        for (int i = 1; i <= goldCount; i++) { // 金矿数
+            for (int j = manCount; j >= 1; j--) { // 工人数
+                // 计算下一行时，[从右向左统计]，把旧的数据一个一个替换掉
+                // - 为什么从右向左统计？
+                // 因为table这个数组，既表示当前计算的行，也表示已经计算过的上一行，
+                // 而下一行计算的值是要依靠上一行的两个值的（第1个是同列的上一个值，第2个是上一行靠前的值），
+                // 如果从左开始遍历，那么上面说的第2个值就会被修改了，从而导致计算结果出错。
+                if (j >= manArray[i - 1]) {
+                    int buwa = table[j];
+                    int wa = table[j - manArray[i - 1]] + goldArray[i - 1];
+
+                    table[j] = buwa > wa ? buwa : wa;
+                }
+            }
+        }
+
+        return table[table.length - 1];
     }
 
     public static void main(String[] args) {
         // 工人数
-        int w = 10;
+        int manCount = 10;
         // 挖矿所需的工人数
-        int[] p = { 5, 5, 3, 4, 3 };
+        int[] manArray = { 5, 5, 3, 4, 3 };
         // 每个矿的含金量
-        int[] g = { 400, 500, 200, 300, 350 };
-        System.out.println("最优收益1：" + getBestGoldMining1(g.length, w, g, p));
-        System.out.println("最优收益2：" + getBestGoldMining2(g.length, w, g, p));
-        System.out.println("最优收益3：" + getBestGoldMining3(g.length, w, g, p));
+        int[] goldArray = { 400, 500, 200, 300, 350 };
+        System.out.println("最优收益1：" + getBestGoldMining1(goldArray.length, manCount, goldArray, manArray));
+        System.out.println("最优收益2：" + getBestGoldMining2(goldArray.length, manCount, goldArray, manArray));
+        System.out.println("最优收益3：" + getBestGoldMining3(goldArray.length, manCount, goldArray, manArray));
     }
 }
