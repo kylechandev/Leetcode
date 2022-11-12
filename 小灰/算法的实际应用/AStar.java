@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-12 17:03:39
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-12 22:42:38
+ * @LastEditTime: 2022-11-12 22:51:13
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.算法的实际应用;
@@ -56,6 +56,7 @@ public class AStar {
             // 加入可到达节点
             for (Node node : nodes) {
                 node.initGrid(currentNode, end);
+                // findNeighbors中已经去过重了，可以放心添加
                 openList.add(node);
             }
 
