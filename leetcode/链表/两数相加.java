@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 09:33:46
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 10:22:55
+ * @LastEditTime: 2022-11-13 10:25:12
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -24,16 +24,8 @@ public class 两数相加 {
         int val;
         ListNode next;
 
-        ListNode() {
-        }
-
         ListNode(int val) {
             this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 
