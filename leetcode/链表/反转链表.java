@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 22:36:56
+ * @LastEditTime: 2022-11-13 23:09:45
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -106,6 +106,10 @@ public class 反转链表 {
      * 时间复杂度：O(n)
      * 空间复杂度：O(n)
      * 
+     * 
+     * 可以参考的思路讲解，和原先自己思考的大致相仿
+     * http://www.justdojava.com/2020/03/29/recursiveLinkList/
+     * 
      * @param head 头节点
      */
     public static ListNode reverseList3(ListNode head) {
@@ -139,6 +143,37 @@ public class 反转链表 {
         return last;
     }
 
+    // 后驱节点
+    private static ListNode successor = null;
+
+    /**
+     * 递归扩展 - 反转前N个节点
+     * 
+     * @param n 前N个节点
+     */
+    public static ListNode reverseListN(ListNode head, int n) {
+        // 1、定义递归函数
+        if (head == null) {
+            return null;
+        }
+
+        // 2、确定递归结束条件
+        if (n == 1 || head.next == null) {
+            // n == 1 前N个节点递归完成
+            // head.next == null 防止n大于链表长度
+            // 记录第 n + 1 个节点
+            successor = head.next;
+            return head;
+        }
+
+        ListNode last = reverseListN(head.next, n - 1);
+
+        head.next.next = head;
+        head.next = successor;
+
+        return last;
+    }
+
     public static void main(String[] args) {
         // 模拟数据 1 2 3 4 5
         ListNode node1 = new ListNode(1);
@@ -152,7 +187,7 @@ public class 反转链表 {
         node4.next = node5;
 
         // 输出 5 4 3 2 1
-        ListNode reverse = reverseList2(node1);
+        ListNode reverse = reverseListN(node1, 7);
 
         if (reverse == null) {
             System.out.println("无节点");
