@@ -18,7 +18,7 @@ public class 二叉树的层序遍历 {
      * 通过数组创建二叉树
      * 
      * @param array       数组
-     * @param parentIndex 父节点位置
+     * @param parentIndex 当前父节点位置「关键点，通过父节点计算节点位置」
      */
     public static TreeNode createBinaryTreeByArray(Integer[] array, int parentIndex) {
         TreeNode treeNode = null;
