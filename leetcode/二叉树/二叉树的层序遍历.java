@@ -51,7 +51,7 @@ public class 二叉树的层序遍历 {
         // 最终结果
         List<List<Integer>> result = new ArrayList<List<Integer>>();
 
-        // 创建一个列表
+        // 创建一个列表（存放一行的节点）
         Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
 
         // 先入队列根节点
