@@ -1,3 +1,10 @@
+/*
+ * @Author: kaic
+ * @Date: 2022-10-29 13:32:24
+ * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2022-11-13 20:54:42
+ * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
 package leetcode;
 
 /**
@@ -21,6 +28,9 @@ public class 盛最多水的容器 {
      * 返回容器可以储存的最大水量。
      * 
      * 说明：你不能倾斜容器。
+     * 
+     * 
+     * 注意：题目给出n条线，但我们一共只能使用2条线，其余的线是不能用的，leetcode中的示例图把n条直接全画上去了，实际使用的线用红色标注了，可能会产生解题误解
      */
     public static int maxArea(int[] height) {
         // height数组的值是每条垂线的高度
