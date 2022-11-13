@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 22:15:51
+ * @LastEditTime: 2022-11-13 22:16:58
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -132,7 +132,11 @@ public class 反转链表 {
         }
 
         // 3、找出递归函数等价关系式：
+
+        // 递归 递 的过程
         ListNode last = reverseList2(head.next); // 接着反转head.next节点
+
+        // 递归 归 的过程
         head.next.next = head;
         head.next = null;
         return last;
