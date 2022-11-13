@@ -2,17 +2,23 @@
  * @Author: kaic
  * @Date: 2022-10-29 13:32:24
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 20:54:42
+ * @LastEditTime: 2022-11-13 21:01:09
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
-package leetcode;
+package leetcode.应用题.双指针;
 
 /**
  * 11. 盛最多水的容器
  * 
  * 中等
  * 
- * 双指针（头尾）
+ * 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+ * 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+ * 返回容器可以储存的最大水量。
+ * 说明：你不能倾斜容器。
+ * 
+ * 【注意】：
+ * 题目给出n条线，但我们一共只能使用2条线，其余的线是不能用的，leetcode中的示例图把n条直接全画上去了，实际使用的线用红色标注了，可能会产生解题误解
  * 
  * https://leetcode.cn/problems/container-with-most-water/
  * 
@@ -21,16 +27,10 @@ package leetcode;
 public class 盛最多水的容器 {
 
     /**
-     * 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+     * 双指针（首尾）
      * 
-     * 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
-     * 
-     * 返回容器可以储存的最大水量。
-     * 
-     * 说明：你不能倾斜容器。
-     * 
-     * 
-     * 注意：题目给出n条线，但我们一共只能使用2条线，其余的线是不能用的，leetcode中的示例图把n条直接全画上去了，实际使用的线用红色标注了，可能会产生解题误解
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
      */
     public static int maxArea(int[] height) {
         // height数组的值是每条垂线的高度
