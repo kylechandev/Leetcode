@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 22:16:58
+ * @LastEditTime: 2022-11-13 22:33:59
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -134,11 +134,16 @@ public class 反转链表 {
         // 3、找出递归函数等价关系式：
 
         // 递归 递 的过程
-        ListNode last = reverseList2(head.next); // 接着反转head.next节点
+        ListNode last = reverseList3(head.next); // 接着反转head.next节点，返回反转后的头节点
 
         // 递归 归 的过程
         head.next.next = head;
         head.next = null;
+        // 想一下，如果是只有两个节点的链表：1 -> 2，反转一下就是：2 -> 1
+        // 操作步骤即: 1.next.next = 1; 1.next = null
+        // 这个递归解法就相当于把问题拆分解决，然后一步步解决完整问题。每次递归 归 的时候都是反转最后一个还未反转的节点，
+≠
+        // 返回分解链表部分的反转后的头节点
         return last;
     }
 
