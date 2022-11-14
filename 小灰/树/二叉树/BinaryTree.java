@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 22:52:09
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-09 20:32:15
+ * @LastEditTime: 2022-11-14 20:27:33
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.树.二叉树;
@@ -65,6 +65,5 @@ package 小灰.树.二叉树;
  */
 public class BinaryTree {
     public static void main(String[] args) {
-
     }
 }
