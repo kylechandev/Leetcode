@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-14 10:34:50
+ * @LastEditTime: 2022-11-14 11:22:13
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -157,6 +157,44 @@ public class 反转链表 {
         return last;
     }
 
+    /**
+     * 迭代扩展 - 反转前N个节点
+     * 
+     * @param n 前N个节点
+     */
+    public static ListNode reverseListNFor(ListNode head, int n) {
+        // 1 -> 2 -> 3 -> 4 -> 5
+        ListNode pre = null;
+        ListNode current = head;
+
+        ListNode left = head;
+
+        int index = n;
+
+        // 思想为：直接在原来链表的基础上，把原链表一个节点一个节点的做反转（就像问题分解一样）
+        while (current != null && index > 0) {
+            // 先暂存下一个节点的位置
+            // 因为马上要更新当前节点的下一个节点重新指向它的前一个节点
+            ListNode next = current.next;
+            // 让当前节点的后节点重新指向前一个节点
+            current.next = pre;
+
+            // 开始新的一轮，位置后移
+
+            // 让前一个节点更新为当前节点
+            pre = current;
+            // 当前节点继续后移
+            current = next;
+            index--;
+        }
+
+        if (current != null) {
+            left.next = current;
+        }
+
+        return pre;
+    }
+
     // 后驱节点
     private static ListNode successor = null;
 
@@ -196,7 +234,7 @@ public class 反转链表 {
     }
 
     /**
-     * 反转链表中间一部分
+     * 递归解法 - 反转链表中间一部分
      * 
      * @param left  开始反转的节点
      * @param right 结束反转的节点
@@ -225,6 +263,60 @@ public class 反转链表 {
         return head;
     }
 
+    /**
+     * 迭代解法 - 反转链表中间一部分
+     * 
+     * @param left  开始反转的节点
+     * @param right 结束反转的节点
+     */
+    public static ListNode reverseBetweenFor(ListNode head, int left, int right) {
+        if (head == null || left > right) {
+            return null;
+        }
+        if (left == right) {
+            return head;
+        }
+
+        // 因为头节点有可能发生变化，使用虚拟头节点可以避免复杂的分类讨论
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+
+        // 【思路】
+        // 定义precursor指针表示left-1的节点
+        // 定义successor节点表示right+1的节点
+        // 定义left节点表示left的节点
+        // 定义right节点表示right的节点
+
+        // 1、找到precursor节点
+        ListNode precursorNode = dummyNode;
+        for (int i = 0; i < left - 1; i++) {
+            precursorNode = precursorNode.next;
+        }
+        // 通过pre计算得到left节点
+        ListNode leftNode = precursorNode.next;
+
+        // 2、找到right节点
+        ListNode rightNode = precursorNode;
+        for (int i = left; i < right + 1; i++) {
+            rightNode = rightNode.next;
+        }
+        // 通过right计算得到successor节点
+        ListNode successorNode = rightNode.next;
+
+        // 3、切断连接
+        precursorNode.next = null;
+        rightNode.next = null;
+
+        // 4、让中间部分[left,right]进行反转
+        reverseList2(leftNode);
+
+        // 5、重新建立连接
+        precursorNode.next = rightNode;
+        leftNode.next = successorNode;
+
+        return dummyNode.next;
+    }
+
     public static void main(String[] args) {
         // 模拟数据 1 2 3 4 5
         ListNode node1 = new ListNode(1);
@@ -238,7 +330,7 @@ public class 反转链表 {
         node4.next = node5;
 
         // 输出 5 4 3 2 1
-        ListNode reverse = reverseBetween(node1, 2, 4);
+        ListNode reverse = reverseBetweenFor(node1, 1, 5);
 
         if (reverse == null) {
             System.out.println("无节点");
