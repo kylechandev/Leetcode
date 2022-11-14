@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 23:07:41
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-14 15:20:29
+ * @LastEditTime: 2022-11-14 21:32:03
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.树.二叉树;
@@ -223,41 +223,6 @@ public class BinaryTreeTraversal {
     }
 
     /**
-     * 后序遍历 - 通过栈实现
-     */
-    public static void postOrderTraversalByStack2(TreeNode rootNode) {
-        Stack<TreeNode> stack = new Stack<>();
-
-        TreeNode treeNode = rootNode;
-
-        // 左 根 右
-
-        // 1、左侧一直入栈到最底部左侧的那个
-
-        while (treeNode != null || !stack.isEmpty()) {
-            // 节点不为空时
-            while (treeNode != null) {
-                // 入栈
-                stack.push(treeNode);
-                // 继续遍历左节点，直到左边为空
-                treeNode = treeNode.left;
-            }
-
-            // 已经遍历到左侧最后一个子节点了
-
-            // 当栈不为空时
-            if (!stack.isEmpty()) {
-                // 开始出栈左侧子节点
-                treeNode = stack.pop();
-                System.out.print(treeNode.data + " ");
-
-                // 再次指向右节点，判断最后一层的左子节点是否存在右节点
-                treeNode = treeNode.right;
-            }
-        }
-    }
-
-    /**
      * 层序遍历 - 通过队列实现
      */
     public static void levelOrderTraversal(TreeNode rootNode) {
@@ -345,11 +310,6 @@ public class BinaryTreeTraversal {
 
         System.out.println("后序遍历（Stack）：");
         postOrderTraversalByStack(treeNode);
-        System.out.println();
-        System.out.println();
-
-        System.out.println("后序遍历（Stack）2：");
-        postOrderTraversalByStack2(treeNode);
         System.out.println();
         System.out.println();
 
