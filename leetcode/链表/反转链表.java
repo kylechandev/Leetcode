@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-14 09:39:09
+ * @LastEditTime: 2022-11-14 10:34:50
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -23,6 +23,9 @@ import java.util.Stack;
  * 值得一提的是，递归操作链表并不高效。
  * 和迭代解法相比，虽然时间复杂度都是 O(N)，但是迭代解法的空间复杂度是 O(1)，而递归解法需要堆栈，空间复杂度是O(N)。
  * 所以考虑效率的话还是使用迭代算法更好。
+ * 
+ * 【递归解法思路】：
+ * https://blog.csdn.net/qq_46620869/article/details/108431673
  * 
  * 
  * https://leetcode.cn/problems/reverse-linked-list/
@@ -145,7 +148,7 @@ public class 反转链表 {
 
         // 递归 归 的过程
         head.next.next = head;
-        head.next = null;
+        head.next = null; // 反转后head变为最后一个节点，所以.next重设为null
         // 想一下，如果是只有两个节点的链表：1 -> 2，反转一下就是：2 -> 1
         // 操作步骤即: 1.next.next = 1; 1.next = null
         // 这个递归解法就相当于把问题拆分解决，然后一步步解决完整问题。每次递归 归 的时候都是反转最后一个还未反转的节点
@@ -170,7 +173,7 @@ public class 反转链表 {
 
         // 2、确定递归结束条件
         if (n == 1 || head.next == null) {
-            // n == 1 前N个节点递归完成
+            // n == 1 说明当前head节点是第n个节点，即这个时候前n个节点递归完成
             // head.next == null 防止n大于链表长度
             successor = head.next; // 递归完成，记录第 n + 1 个节点，以便让递归`归`时让head.hext指向第n+1个节点
             return head;
@@ -178,15 +181,17 @@ public class 反转链表 {
 
         // 3、找出递归函数等价关系式：
 
+        // 递归的递
         // 对于head来说，反转前n个节点
         // 对于head.next来说，就是反转前n-1个节点
-        ListNode last = reverseListN(head.next, n - 1);
+        ListNode last = reverseListN(head.next, n - 1); // 先递归`递`到第n个节点，返回反转后的头节点
 
-        // 递归的归
-        // 反转链表操作
+        // 递归的归 - 反转链表操作
+        // 这两行表示从后向前开始进行节点反转
         head.next.next = head;
-        head.next = successor;
+        head.next = successor; // 当递归`归`到最后一个节点时（即原链表的头节点），让它的next重新指向第n+1个节点
 
+        // 返回反转后的新头节点
         return last;
     }
 
@@ -212,8 +217,11 @@ public class 反转链表 {
 
         // 对于head节点来说，反转left到right之间的节点
         // 对于head.next节点来说，就是反转left-1到right-1之间的节点
-        head.next = reverseBetween(head.next, left - 1, right - 1);
+        head.next = reverseBetween(head.next, left - 1, right - 1); // 重点：让head的next节点指向反转后的节点
 
+        System.out.println("test head val: " + head.val);
+
+        // 因为反转的是中间部分的节点，所有最终返回的头节点还是原来的head（如果left=1，那么在递归结束条件那里就直接return掉了）
         return head;
     }
 
