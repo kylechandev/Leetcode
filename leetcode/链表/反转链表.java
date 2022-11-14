@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-14 09:36:13
+ * @LastEditTime: 2022-11-14 09:39:09
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -198,6 +198,9 @@ public class 反转链表 {
      */
     public static ListNode reverseBetween(ListNode head, int left, int right) {
         // 1、定义递归函数
+        if (head == null) {
+            return null;
+        }
 
         // 2、确定递归结束条件
         if (left == 1) {
