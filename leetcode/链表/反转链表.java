@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 23:09:45
+ * @LastEditTime: 2022-11-14 09:36:13
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表;
@@ -13,6 +13,17 @@ import java.util.Stack;
  * 反转链表
  * 
  * 简单
+ * 
+ * 
+ * 【对于递归】：
+ * 处理的技巧是：不要跳进递归，而是利用明确的定义来实现算法逻辑。
+ * 处理看起来比较困难的问题，可以尝试化整为零，把一些简单的解法进行修改，解决困难的问题。
+ * 
+ * 
+ * 值得一提的是，递归操作链表并不高效。
+ * 和迭代解法相比，虽然时间复杂度都是 O(N)，但是迭代解法的空间复杂度是 O(1)，而递归解法需要堆栈，空间复杂度是O(N)。
+ * 所以考虑效率的话还是使用迭代算法更好。
+ * 
  * 
  * https://leetcode.cn/problems/reverse-linked-list/
  */
@@ -161,17 +172,46 @@ public class 反转链表 {
         if (n == 1 || head.next == null) {
             // n == 1 前N个节点递归完成
             // head.next == null 防止n大于链表长度
-            // 记录第 n + 1 个节点
-            successor = head.next;
+            successor = head.next; // 递归完成，记录第 n + 1 个节点，以便让递归`归`时让head.hext指向第n+1个节点
             return head;
         }
 
+        // 3、找出递归函数等价关系式：
+
+        // 对于head来说，反转前n个节点
+        // 对于head.next来说，就是反转前n-1个节点
         ListNode last = reverseListN(head.next, n - 1);
 
+        // 递归的归
+        // 反转链表操作
         head.next.next = head;
         head.next = successor;
 
         return last;
+    }
+
+    /**
+     * 反转链表中间一部分
+     * 
+     * @param left  开始反转的节点
+     * @param right 结束反转的节点
+     */
+    public static ListNode reverseBetween(ListNode head, int left, int right) {
+        // 1、定义递归函数
+
+        // 2、确定递归结束条件
+        if (left == 1) {
+            // 如果开始节点left=1，那么就相当于反转链表开头的N个节点
+            return reverseListN(head, right);
+        }
+
+        // 3、找出递归函数等价关系式：
+
+        // 对于head节点来说，反转left到right之间的节点
+        // 对于head.next节点来说，就是反转left-1到right-1之间的节点
+        head.next = reverseBetween(head.next, left - 1, right - 1);
+
+        return head;
     }
 
     public static void main(String[] args) {
@@ -187,7 +227,7 @@ public class 反转链表 {
         node4.next = node5;
 
         // 输出 5 4 3 2 1
-        ListNode reverse = reverseListN(node1, 7);
+        ListNode reverse = reverseBetween(node1, 2, 4);
 
         if (reverse == null) {
             System.out.println("无节点");
