@@ -2,12 +2,15 @@
  * @Author: kaic
  * @Date: 2022-11-14 21:13:14
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-15 16:47:37
+ * @LastEditTime: 2022-11-25 09:54:35
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.遍历;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.List;
 
 import leetcode.二叉树.TreeNode;
@@ -42,6 +45,25 @@ public class 后序 {
 
         // 入栈顺序：根-左-右（先序） 出栈顺序：根-右-左， 最后翻转结果
 
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode treeNode = stack.pop();
+            result.add(treeNode.val);
+
+            TreeNode left = treeNode.left;
+            if (left != null) {
+                stack.push(left);
+            }
+            TreeNode right = treeNode.right;
+            if (right != null) {
+                stack.push(right);
+            }
+        }
+
+        Collections.reverse(result);
+
         return result;
     }
 
@@ -50,6 +72,6 @@ public class 后序 {
         postorderTraversal(TreeNode.demo(), result);
         System.out.println(result);
 
-        postorderTraversal(TreeNode.demo());
+        System.out.println(postorderTraversal(TreeNode.demo()));
     }
 }
