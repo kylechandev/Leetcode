@@ -1,4 +1,11 @@
-package leetcode.数组;
+/*
+ * @Author: kaic
+ * @Date: 2022-11-07 14:27:58
+ * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2022-11-25 09:11:39
+ * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
+package leetcode.数组.简单;
 
 import java.util.Arrays;
 
