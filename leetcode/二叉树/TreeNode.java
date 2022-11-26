@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-14 15:18:15
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 16:34:29
+ * @LastEditTime: 2022-11-26 20:11:21
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树;
@@ -65,7 +65,13 @@ public class TreeNode {
         // 先序 [1, 2, 4, 5, 3, 6]
         // 中序 [1, 2, 4, 5, 3, 6]
         // 后序 [1, 2, 4, 5, 3, 6]
-        Integer[] array = new Integer[] { 1, 2, 3, 4, 5, null, 6 };
+        return demo(new Integer[] { 1, 2, 3, 4, 5, null, 6 });
+    }
+
+    /**
+     * 自定义一个二叉树
+     */
+    public static TreeNode demo(Integer[] array) {
         return createBinaryTreeByArray(array, 0);
     }
 
