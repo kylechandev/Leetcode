@@ -1,11 +1,11 @@
 /*
  * @Author: kaic
- * @Date: 2022-11-08 11:27:55
+ * @Date: 2022-11-25 16:26:34
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 09:08:45
+ * @LastEditTime: 2022-11-26 09:11:09
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
-package leetcode.二叉树.遍历;
+package leetcode.二叉树.简单;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -15,22 +15,33 @@ import java.util.Queue;
 import leetcode.二叉树.TreeNode;
 
 /**
- * 二叉树的层序遍历
+ * 二叉树的最大深度
  * 
- * 中等
+ * 简单
  * 
- * https://leetcode.cn/problems/binary-tree-level-order-traversal/
+ * https://leetcode.cn/problems/maximum-depth-of-binary-tree/
  */
-public class 层序 {
+public class 二叉树的最大深度 {
 
-    public static List<List<Integer>> levelOrder(TreeNode root) {
+    /**
+     * 递归法（深度优先搜索）
+     */
+    public static int maxDepth(TreeNode root) {
         if (root == null) {
-            return new ArrayList<>();
+            return 0;
         }
 
-        // 最终结果
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        return Math.max(left, right) + 1;
+    }
 
+    /**
+     * 层序遍历（广度优先搜索）
+     * 
+     * 层数就是深度
+     */
+    public static int maxDepth2(TreeNode root) {
         // 创建一个列表（存放一行的节点）
         Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
 
@@ -38,6 +49,8 @@ public class 层序 {
         if (root != null) {
             queue.offer(root);
         }
+
+        int depth = 0;
 
         while (!queue.isEmpty()) {
             // 当前行的长度
@@ -62,15 +75,13 @@ public class 层序 {
                 }
             }
 
-            // 添加这一行的数据
-            result.add(line);
+            depth++;
         }
 
-        return result;
+        return depth;
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> result = levelOrder(TreeNode.demo());
-        System.out.println(result);
+        System.out.println(maxDepth2(TreeNode.demo()));
     }
 }
