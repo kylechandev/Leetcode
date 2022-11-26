@@ -2,10 +2,12 @@
  * @Author: kaic
  * @Date: 2022-11-14 15:18:15
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-14 20:30:09
+ * @LastEditTime: 2022-11-26 10:41:32
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树;
+
+import leetcode.二叉树.遍历.层序;
 
 /**
  * 二叉树节点
@@ -62,5 +64,10 @@ public class TreeNode {
         // 后序 [1, 2, 4, 5, 3, 6]
         Integer[] array = new Integer[] { 1, 2, 3, 4, 5, null, 6 };
         return createBinaryTreeByArray(array, 0);
+    }
+
+    public static void levelPrint(TreeNode root) {
+        System.out.println(层序.levelOrder(root));
+        ;
     }
 }

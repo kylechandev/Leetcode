@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-26 09:21:53
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 09:45:47
+ * @LastEditTime: 2022-11-26 10:29:37
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.简单;
@@ -78,7 +78,7 @@ public class 二叉树的最小深度 {
             return 0;
         }
         // 结束条件2：
-        // 当root的左右子节点=null时，表示为叶子节点，此时高度为1
+        // 当root的左右子节点都为空时，表示为叶子节点，此时高度为1
         if (root.left == null && root.right == null) {
             return 1;
         }
@@ -89,7 +89,7 @@ public class 二叉树的最小深度 {
 
         // 当有一边为空时，返回不为空的孩子节点的最小深度
         if (root.left == null || root.right == null) {
-            // 因为当一边为空时，那么它必定返回0（结束条件1），所有这里返回l+r+1
+            // 当其中一边为空时，那么这一边必定返回0（结束条件1），所有这里可以直接返回l+r+1（结束条件2其实可以合并在这里）
             return l + r + 1;
         } else {
             // 左右两边都不为空时，比较返回两边最小的深度
