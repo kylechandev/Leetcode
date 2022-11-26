@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 14:27:58
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 14:36:56
+ * @LastEditTime: 2022-11-26 14:50:52
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数组.简单;
@@ -41,12 +41,32 @@ public class 删除有序数组中的重复项 {
             }
         }
 
-        return i + 1;
+        // 返回有效数组长度
+        return i + 1; // 因为这里i表示的是有效数组的最后一位下标，所以最终return有效数组长度时还需要再+1
+    }
+
+    /**
+     * 通用解法
+     * 
+     * @param k 重复数字最多保留k位
+     */
+    public static int removeDuplicates(int[] nums, int k) {
+        int idx = 0; // 有效数组待插入的位置
+
+        for (int num : nums) {
+            // idx < k 防止有数字原始的重复数量不足k个
+            // nums[idx - k] 让num和有效数组的前k个数取比较（因为每个数字可以重复k次），不同则插入
+            if (idx < k || nums[idx - k] != num) {
+                nums[idx++] = num;
+            }
+        }
+
+        return idx; // 因为这里idx表示接下来待插入的位置，而不是有效数组的最后一个位置下标，所以return时不用再+1了
     }
 
     public static void main(String[] args) {
         int[] nums = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-        int a = removeDuplicates(nums);
+        int a = removeDuplicates(nums, 1);
         System.out.println(a);
         System.out.println(Arrays.toString(nums));
         System.out.println(Arrays.toString(Arrays.copyOfRange(nums, 0, a)));
