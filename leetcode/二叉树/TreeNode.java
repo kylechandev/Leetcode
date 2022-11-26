@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-14 15:18:15
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 11:18:52
+ * @LastEditTime: 2022-11-26 14:15:17
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树;
@@ -78,10 +78,35 @@ public class TreeNode {
         return createBinaryTreeByArray(array, 0);
     }
 
+    public static class Tree {
+        // 二叉树
+        public TreeNode root;
+        // 它的子树
+        public TreeNode subRoot;
+
+        public Tree(TreeNode root, TreeNode subRoot) {
+            this.root = root;
+            this.subRoot = subRoot;
+        }
+    }
+
+    /**
+     * 一个二叉树以及他的子树
+     */
+    public static Tree rootAndSubroot() {
+        Integer[] root = new Integer[] { 3, 4, 5, 1, 2 };
+        Integer[] subRoot = new Integer[] { 4, 1, 2 };
+
+        TreeNode rootNode = createBinaryTreeByArray(root, 0);
+        TreeNode subRootNode = createBinaryTreeByArray(subRoot, 0);
+        return new Tree(rootNode, subRootNode);
+    }
+
     /**
      * 层序打印二叉树
      */
     public static void levelPrint(TreeNode root) {
         System.out.println(层序.levelOrder(root));
     }
+
 }
