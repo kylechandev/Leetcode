@@ -58,7 +58,7 @@ public class TreeNode {
     }
 
     /**
-     * 一个二叉树
+     * 一个普通二叉树
      */
     public static TreeNode demo() {
         // 创建二叉树的源数组
@@ -73,7 +73,7 @@ public class TreeNode {
      * 一个对称二叉树
      */
     public static TreeNode symmetric() {
-        // 创建二叉树的源数组
+        // https://leetcode.cn/problems/symmetric-tree/
         Integer[] array = new Integer[] { 1, 2, 2, 3, 4, 4, 3 };
         return createBinaryTreeByArray(array, 0);
     }
@@ -94,6 +94,7 @@ public class TreeNode {
      * 一个二叉树以及他的子树
      */
     public static Tree rootAndSubroot() {
+        // https://leetcode.cn/problems/subtree-of-another-tree/
         Integer[] root = new Integer[] { 3, 4, 5, 1, 2 };
         Integer[] subRoot = new Integer[] { 4, 1, 2 };
 
@@ -106,7 +107,17 @@ public class TreeNode {
      * 一个完全二叉树
      */
     public static TreeNode completeBinaryTree() {
+        // https://leetcode.cn/problems/count-complete-tree-nodes/
         Integer[] array = new Integer[] { 1, 2, 3, 4, 5, 6 };
+        return createBinaryTreeByArray(array, 0);
+    }
+
+    /**
+     * 一个平衡二叉树
+     */
+    public static TreeNode balancedBinaryTree() {
+        // https://leetcode.cn/problems/balanced-binary-tree/
+        Integer[] array = new Integer[] { 3, 9, 20, null, null, 15, 7 };
         return createBinaryTreeByArray(array, 0);
     }
 
