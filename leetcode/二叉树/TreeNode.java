@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-14 15:18:15
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 14:15:17
+ * @LastEditTime: 2022-11-26 16:27:02
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树;
@@ -100,6 +100,14 @@ public class TreeNode {
         TreeNode rootNode = createBinaryTreeByArray(root, 0);
         TreeNode subRootNode = createBinaryTreeByArray(subRoot, 0);
         return new Tree(rootNode, subRootNode);
+    }
+
+    /**
+     * 一个完全二叉树
+     */
+    public static TreeNode completeBinaryTree() {
+        Integer[] array = new Integer[] { 1, 2, 3, 4, 5, 6 };
+        return createBinaryTreeByArray(array, 0);
     }
 
     /**
