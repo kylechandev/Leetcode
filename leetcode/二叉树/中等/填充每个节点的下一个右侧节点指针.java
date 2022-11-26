@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-25 15:57:56
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-25 16:09:29
+ * @LastEditTime: 2022-11-26 14:25:34
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.中等;
@@ -11,7 +11,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
- * 填充每个节点的下一个右侧节点指针
+ * 116. 填充每个节点的下一个右侧节点指针
  * 
  * 中等
  * 

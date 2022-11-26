@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-25 15:39:43
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-25 15:50:39
+ * @LastEditTime: 2022-11-26 14:25:47
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.中等;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * N叉树的层序遍历
+ * 429. N叉树的层序遍历
  * 
  * 中等
  * 

@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-13 10:26:51
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 10:36:36
+ * @LastEditTime: 2022-11-26 14:35:38
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数学;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 两数之和
+ * 1. 两数之和
  * 
  * 简单
  * 

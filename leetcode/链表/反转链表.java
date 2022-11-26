@@ -10,7 +10,7 @@ package leetcode.链表;
 import java.util.Stack;
 
 /**
- * 反转链表
+ * 206. 反转链表
  * 
  * 简单
  * 

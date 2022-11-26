@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-24 17:14:27
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-25 09:11:50
+ * @LastEditTime: 2022-11-26 14:34:42
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数组.简单;
@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 数组中重复的数字
+ * 剑指 Offer 03. 数组中重复的数字
  * 
  * 简单
  * 
