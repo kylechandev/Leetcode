@@ -2,15 +2,13 @@
  * @Author: kaic
  * @Date: 2022-11-13 09:17:53
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-25 10:08:02
+ * @LastEditTime: 2022-11-27 10:23:54
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 import leetcode.二叉树.TreeNode;
 
@@ -19,94 +17,42 @@ import leetcode.二叉树.TreeNode;
  */
 public class Test {
 
-    /**
-     * 先序遍历
-     */
-    public static List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> result = new LinkedList<>();
-
-        if (root == null) {
-            return result;
+    public static TreeNode generateTree(Integer[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
         }
+        Queue<TreeNode> q = new LinkedList<>();
+        TreeNode root = new TreeNode(nums[0]);
+        q.offer(root);
+        int k = 1;
 
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        stack.push(root);
-
-        // 根左右
-        while (!stack.isEmpty()) {
-            TreeNode treeNode = stack.pop();
-            result.add(treeNode.val);
-
-            TreeNode right = treeNode.right;
-            if (right != null) {
-                stack.push(right);
-            }
-            TreeNode left = treeNode.left;
-            if (left != null) {
-                stack.push(left);
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * 中序遍历
-     */
-    public static List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new LinkedList<>();
-
-        // 左根右
-
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode treeNode = root;
-
-        while (treeNode != null || !stack.isEmpty()) {
-            while (treeNode != null) {
-                stack.push(treeNode);
-                treeNode = treeNode.left;
-            }
-
-            treeNode = stack.pop();
-            result.add(treeNode.val);
-            treeNode = treeNode.right;
-        }
-
-        return result;
-    }
-
-    /**
-     * 层序遍历
-     */
-    public static List<List<Integer>> levelorderTraversal(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<>();
-
-        Deque<TreeNode> queue = new ArrayDeque<>();
-        queue.offer(root);
-
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-
-            List<Integer> line = new LinkedList<>();
+        while (k < nums.length) {
+            int size = q.size();
             for (int i = 0; i < size; i++) {
-                TreeNode treeNode = queue.poll();
-                line.add(treeNode.val);
-
-                if (treeNode.left != null) {
-                    queue.offer(treeNode.left);
+                TreeNode p = q.poll();
+                if (nums[k] != null) {
+                    TreeNode node = new TreeNode(nums[k]);
+                    p.left = node;
+                    q.offer(node);
+                } else {
+                    p.left = null;
                 }
-                if (treeNode.right != null) {
-                    queue.offer(treeNode.right);
+                k++;
+                if (nums[k] != null) {
+                    TreeNode node = new TreeNode(nums[k]);
+                    p.right = node;
+                    q.offer(node);
+                } else {
+                    p.right = null;
                 }
+                k++;
             }
-
-            result.add(line);
         }
 
-        return result;
+        return root;
     }
 
     public static void main(String[] args) {
-        System.out.println(levelorderTraversal(TreeNode.demo()));
+        generateTree(new Integer[] { 1, 2, 3, 4, null, 5, 6, null, null, 7 });
     }
 }
