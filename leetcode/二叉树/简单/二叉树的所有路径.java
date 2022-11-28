@@ -29,13 +29,8 @@ public class 二叉树的所有路径 {
         List<Integer> path = new ArrayList<>();
         List<String> result = new ArrayList<>();
 
-        if (root == null) {
-            return result;
-        } else {
-            transval(root, path, result);
-
-            return result;
-        }
+        transval(root, path, result);
+        return result;
     }
 
     /**
@@ -46,6 +41,10 @@ public class 二叉树的所有路径 {
      * @param result 所有路径结果集合
      */
     private static void transval(TreeNode root, List<Integer> path, List<String> result) {
+        if (root == null) {
+            return;
+        }
+
         // 根
         // 写在终止条件前，让最后一个叶子节点能够添加进来
         path.add(root.val);
@@ -56,21 +55,22 @@ public class 二叉树的所有路径 {
             // 遍历到叶子节点时，表示一条路径已经遍历完成了，此时将`路径`添加到结果集合中
             result.add(pathConvert(path));
 
-            return;
+            // return;
         }
 
-        // 继续遍历左节点
-        if (root.left != null) {
+        // if (root.left != null) {
+            // 继续遍历左节点
             transval(root.left, path, result);
             // 回溯
-            path.remove(path.size() - 1);
-        }
-        // 继续遍历右节点
-        if (root.right != null) {
+            // path.remove(path.size() - 1);
+        // }
+
+        // if (root.right != null) {
+            // 继续遍历右节点
             transval(root.right, path, result);
             // 回溯
             path.remove(path.size() - 1);
-        }
+        // }
     }
 
     private static String pathConvert(List<Integer> path) {
@@ -119,6 +119,6 @@ public class 二叉树的所有路径 {
     }
 
     public static void main(String[] args) {
-        System.out.println(binaryTreePaths2(TreeNode.demo(new Integer[] { 1, 2, 3, null, 5 })));
+        System.out.println(binaryTreePaths(TreeNode.demo(new Integer[] { 1, 2, 3, null, 5 })));
     }
 }
