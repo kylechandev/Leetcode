@@ -45,7 +45,7 @@ public class 中序 {
                 treeNode = treeNode.left;
             }
 
-            // 遍历左节点
+            // 遍历中节点
             treeNode = stack.pop();
             result.add(treeNode.val);
             // 遍历右节点
