@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-14 15:18:15
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 20:11:21
+ * @LastEditTime: 2022-11-29 20:00:24
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树;
@@ -73,6 +73,38 @@ public class TreeNode {
      */
     public static TreeNode demo(Integer[] array) {
         return createBinaryTreeByArray(array, 0);
+    }
+
+    /**
+     * 搜索某一个节点（假设二叉树的每一个节点的值都不相同）
+     * 
+     * @param value 需要搜索的值
+     */
+    public TreeNode searchNode(int value) {
+        return searchTraverval(this, value);
+    }
+
+    /**
+     * 递归遍历搜索二叉树的某一个节点
+     */
+    private TreeNode searchTraverval(TreeNode root, int value) {
+        // 结束条件
+        if (root == null) {
+            return null;
+        }
+        if (root.val == value) {
+            return root;
+        }
+
+        // 递归找左子树
+        TreeNode findLeft = searchTraverval(root.left, value);
+        if (findLeft != null) {
+            return findLeft;
+        } else {
+            // 继续递归找右子树
+            TreeNode findRight = searchTraverval(root.right, value);
+            return findRight;
+        }
     }
 
     /**
