@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-29 14:28:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-29 20:32:47
+ * @LastEditTime: 2022-11-29 20:38:17
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.中等;
@@ -31,7 +31,6 @@ public class 二叉树的最近公共祖先 {
      * @param root 根节点
      * @param p    节点p
      * @param q    节点q
-     * @return
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {
