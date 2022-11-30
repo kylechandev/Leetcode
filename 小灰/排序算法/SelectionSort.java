@@ -2,6 +2,13 @@
  * @Author: kaic
  * @Date: 2022-11-30 16:39:32
  * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2022-11-30 16:52:08
+ * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
+/*
+ * @Author: kaic
+ * @Date: 2022-11-30 16:39:32
+ * @LastEditors: kylechandev kylechan47@gmail.com
  * @LastEditTime: 2022-11-30 16:49:55
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
@@ -11,6 +18,9 @@ import java.util.Arrays;
 
 /**
  * 选择排序
+ * 
+ * 时间复杂度：O(n²)
+ * 空间复杂度：O(1)
  * 
  * 基本思想是：
  * 首先在未排序的数列中找到最小(or最大)元素，
@@ -25,7 +35,7 @@ public class SelectionSort {
         int min;
         for (int i = 0; i < array.length - 1; i++) {
             min = i;
-            
+
             for (int j = i + 1; j < array.length; j++) {
                 // 记录未排序区间的最小值的下标
                 if (array[j] < array[min]) {
