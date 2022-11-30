@@ -20,14 +20,37 @@ import leetcode.二叉树.TreeNode;
  * https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/ 相同
  * 
  * 
+ * 【理解：相当于有序数组从后往前累加值】
+ * [2,5,13] -> [20,18,13]
+ * 
+ * 
  * https://leetcode.cn/problems/convert-bst-to-greater-tree/
  */
 public class 把二叉搜索树转换为累加树 {
+
+    private TreeNode preNode = null;
 
     public TreeNode convertBST(TreeNode root) {
         if (root == null) {
             return null;
         }
+
+        // 右
+        convertBST(root.right);
+
+        // 中
+        if (preNode == null) {
+            preNode = root;
+        } else {
+            // 开始累加
+            int sum = root.val + preNode.val;
+            root.val = sum;
+
+            preNode = root;
+        }
+
+        // 左
+        convertBST(root.left);
 
         return root;
     }
