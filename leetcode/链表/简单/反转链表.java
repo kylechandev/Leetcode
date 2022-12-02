@@ -2,12 +2,14 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-12-02 09:59:54
+ * @LastEditTime: 2022-12-02 16:20:47
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.链表.简单;
 
 import java.util.Stack;
+
+import leetcode.链表.ListNode;
 
 /**
  * 206. 反转链表
@@ -31,18 +33,6 @@ import java.util.Stack;
  * https://leetcode.cn/problems/reverse-linked-list/
  */
 public class 反转链表 {
-
-    /*
-     * Definition for singly-linked list.
-     */
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     /**
      * 迭代解法 - 借助栈
@@ -147,6 +137,7 @@ public class 反转链表 {
         ListNode last = reverseList3(head.next); // 接着反转head.next节点，返回反转后的头节点
 
         // 递归 归 的过程
+        // 注意这里要操作的是参数`head`，不能操作`last`
         head.next.next = head;
         head.next = null; // 反转后head变为最后一个节点，所以.next重设为null
         // 想一下，如果是只有两个节点的链表：1 -> 2，反转一下就是：2 -> 1
@@ -330,7 +321,8 @@ public class 反转链表 {
         node4.next = node5;
 
         // 输出 5 4 3 2 1
-        ListNode reverse = reverseBetweenFor(node1, 1, 5);
+        ListNode reverse = reverseList3(node1);
+        // ListNode reverse = reverseBetweenFor(node1, 1, 5);
 
         if (reverse == null) {
             System.out.println("无节点");

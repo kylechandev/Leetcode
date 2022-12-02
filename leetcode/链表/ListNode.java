@@ -4,16 +4,16 @@ package leetcode.链表;
  * @Author: kaic
  * @Date: 2022-12-02 10:00:01
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-12-02 10:05:08
+ * @LastEditTime: 2022-12-02 10:08:24
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 
 public class ListNode {
     // 结点的值
-    int val;
+    public int val;
 
     // 下一个结点
-    ListNode next;
+    public ListNode next;
 
     // 节点的构造函数(无参)
     public ListNode() {
