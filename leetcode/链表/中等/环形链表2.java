@@ -120,6 +120,8 @@ public class 环形链表2 {
         n1.next = n2;
         n2.next = n1;
 
+        System.out.println(new 环形链表2().containsCycle(n1));
+
         new 环形链表2().detectCycle(n1);
         // ListNode.printListNode(result);
     }
