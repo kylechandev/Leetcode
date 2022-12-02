@@ -2,10 +2,10 @@
  * @Author: kaic
  * @Date: 2022-11-13 09:33:46
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 14:35:54
+ * @LastEditTime: 2022-12-02 09:59:44
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
-package leetcode.链表;
+package leetcode.链表.简单;
 
 /**
  * 2. 两数相加

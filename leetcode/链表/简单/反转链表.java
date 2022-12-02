@@ -2,10 +2,10 @@
  * @Author: kaic
  * @Date: 2022-11-13 21:08:31
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-14 11:22:13
+ * @LastEditTime: 2022-12-02 09:59:54
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
-package leetcode.链表;
+package leetcode.链表.简单;
 
 import java.util.Stack;
 
