@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-08 21:01:58
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 10:29:12
+ * @LastEditTime: 2023-04-18 21:52:01
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -60,6 +60,7 @@ public class BubbleSort {
                 break;
             }
 
+            // 更新无需数列的边界
             sortBorder = lastExchangeIndex;
         }
     }

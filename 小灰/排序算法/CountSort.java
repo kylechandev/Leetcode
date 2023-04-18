@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-09 21:15:43
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 10:26:18
+ * @LastEditTime: 2023-04-18 22:36:29
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -63,16 +63,15 @@ public class CountSort {
         int[] countArray = new int[max - min + 1];
         // 2、统计每个独立元素出现的次数
         for (int i = 0; i < array.length; i++) {
-            // 可以直接使用数组元素自增
-            // array[index++]++;
+            // 这一步是按照数值大小来顺序赋值的，所以countArray这个数组就是有序地
             countArray[array[i] - min] = ++countArray[array[i] - min];
         }
 
         // 3、遍历统计数组，得到排序结果
         int index = 0;
-        for (int i = 0; i < countArray.length; i++) {
-            for (int j = 0; j < countArray[i]; j++) {
-                array[index++] = i + min;
+        for (int i = 0; i < countArray.length; i++) { // 遍历整个序列每个出现的数
+            for (int j = 0; j < countArray[i]; j++) { // 得到每个数出现的次数
+                array[index++] = i + min; // 赋值原数值
             }
         }
     }

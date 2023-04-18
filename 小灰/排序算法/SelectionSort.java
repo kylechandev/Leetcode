@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-30 16:39:32
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-30 16:52:08
+ * @LastEditTime: 2023-04-18 21:57:43
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 /*
@@ -32,7 +32,7 @@ import java.util.Arrays;
 public class SelectionSort {
 
     public static void selectionSort(int[] array) {
-        int min;
+        int min; // 未排序区间的最小值下标
         for (int i = 0; i < array.length - 1; i++) {
             min = i;
 
@@ -43,7 +43,7 @@ public class SelectionSort {
                 }
             }
 
-            // 未排序区间的最小值位置和i位置进行交换
+            // 未排序区间的最小值位置和i位置(已排序区间的最后位置)进行交换
             int temp = array[min];
             array[min] = array[i];
             array[i] = temp;

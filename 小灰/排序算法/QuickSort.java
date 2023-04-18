@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-08 22:40:56
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-10 10:29:00
+ * @LastEditTime: 2023-04-18 22:25:53
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -99,12 +99,14 @@ public class QuickSort {
         // [min, max] n=rand.nextInt(max-min+1)+min
         int randomIndex = new Random().nextInt(endIndex - startIndex + 1) + startIndex;
 
+        // 交换到第一个元素所在的位置
         if (randomIndex != 0) {
             int temp = array[startIndex];
             array[startIndex] = array[randomIndex];
             array[randomIndex] = temp;
         }
 
+        // 返回第一个元素作为基准值（这里已经是交换完成的随机值了）
         return array[startIndex];
     }
 
@@ -116,6 +118,8 @@ public class QuickSort {
      * @param arr        待交换的数组
      * @param startIndex 起始下标
      * @param endIndex   结束下标
+     * 
+     * @return 返回中间下标
      */
     private static int partition(int[] array, int startIndex, int endIndex) {
         // 选定基准值
@@ -125,19 +129,20 @@ public class QuickSort {
         int left = startIndex;
         int right = endIndex;
 
-        while (left != right) {
+        // while (left != right) {
+        while (left < right) {
 
-            // 1、右指针位置的值比pivot大时，向左侧移动
+            // 1、右指针位置的值比pivot大时，right向左侧移动，直到找到右侧比pivot值小的数
             while (left < right && array[right] > pivot) {
                 right--;
             }
 
-            // 2、左指针位置的值比pivot小或等于时，向右侧移动
+            // 2、左指针位置的值比pivot小或等于时，left向右侧移动，直到直到左侧比pivot值大的数
             while (left < right && array[left] <= pivot) {
                 left++;
             }
 
-            // 3、交换left和right指针数据
+            // 3、交换left和right指针数据（把`左侧找到的比pivot值大的数`和`右侧找到的比pivot值小的数`交换，实现左侧都是小数，右侧都是大数）
             if (left < right) {
                 int temp = array[left];
                 array[left] = array[right];
@@ -146,8 +151,9 @@ public class QuickSort {
         }
 
         // 4、左右指针重合后和pivot值交换位置
+        // array[startIndex]的值就是pivot，array[left]现在在中间位置，交换两者位置让pivot值到中间去
         array[startIndex] = array[left];
-        array[left] = pivot;
+        array[left] = pivot; // pivot就是array[startIndex]
 
         return left;
     }
