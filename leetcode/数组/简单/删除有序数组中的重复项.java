@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 14:27:58
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 14:50:52
+ * @LastEditTime: 2023-04-22 10:27:58
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数组.简单;
@@ -25,7 +25,7 @@ import java.util.Arrays;
 public class 删除有序数组中的重复项 {
 
     /**
-     * 双指针解法
+     * 双指针解法（快慢指针）
      * 
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
