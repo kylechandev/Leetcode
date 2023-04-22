@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-12-05 10:49:35
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-12-05 14:44:35
+ * @LastEditTime: 2023-04-19 09:58:57
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.字符串.简单;
@@ -39,9 +39,12 @@ public class 反转字符串2 {
 
         int preIndex = 0;
         for (int i = 0; i < length; i++) {
-            // 累计个数
+            // 开始计数
             int total = i - preIndex + 1;
 
+            // 判断符合条件
+            // total == doubleK : 计数至 2k 个字符
+            // i + 1 >= length : 到字符串末尾了，字符串已经遍历完成
             if (total == doubleK || i + 1 >= length) {
                 // 准备反转
                 int left = 0;
@@ -57,7 +60,7 @@ public class 反转字符串2 {
                     right = preIndex + k - 1;
                 }
 
-                // 交换位置
+                // 交换前k个字符串的位置
                 char temp;
                 while (left < right) {
                     temp = ss[left];
@@ -68,7 +71,7 @@ public class 反转字符串2 {
                     right--;
                 }
 
-                // 重置临时变量
+                // 重置临时变量，从新的位置开始计数
                 preIndex = i + 1;
             }
         }

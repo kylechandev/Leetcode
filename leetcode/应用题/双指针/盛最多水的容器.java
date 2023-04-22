@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-10-29 13:32:24
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-13 21:01:09
+ * @LastEditTime: 2023-04-18 23:12:41
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.应用题.双指针;
@@ -35,7 +35,8 @@ public class 盛最多水的容器 {
     public static int maxArea(int[] height) {
         // height数组的值是每条垂线的高度
 
-        // 可容纳水的高度由两板中的 短板 决定，因此可得如下 面积公式 ：
+        // 可容纳水的高度由两板中的 短板 决定（因为要求容纳最多的水，两条线围成的容器的容量最终有短线决定，因为高线高出来的部分也溢出了）
+        // 因此可得如下 面积公式 ：
         // S(l,r)=min(h[l],h[r])×(r−l)
 
         // n条垂线
@@ -53,6 +54,8 @@ public class 盛最多水的容器 {
             max = Math.max(max, sum);
 
             // 小的前进
+            // 因为移动短板，下次的短板可能变大（Math.min(height[l], height[r])），下个水槽面积可能增大
+            // 因为移动长板，下次的短板可能不变或变小（Math.min(height[l], height[r])），下个水槽面积一定减小
             if (height[l] > height[r]) {
                 r--;
             } else {

@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-26 11:16:12
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 11:55:12
+ * @LastEditTime: 2023-04-20 20:42:45
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.简单;
@@ -14,7 +14,7 @@ import java.util.Queue;
 import leetcode.二叉树.TreeNode;
 
 /**
- * 101. 对称二叉树
+ * 101. 对称二叉树 - 「广度优先搜索BFS」
  * 
  * 简单
  * 
@@ -47,6 +47,8 @@ public class 对称二叉树 {
                 continue;
             }
 
+            // left == null || right == null -> 左右子树其中一个为null，直接不对称
+            // left.val != right.val -> 左右子树都存在，但值不同，所以不匹配
             if (left == null || right == null || left.val != right.val) {
                 return false;
             }
@@ -118,10 +120,13 @@ public class 对称二叉树 {
             // 左右子树都为空，对称，返回true
             return true;
         } else if (left == null || right == null || left.val != right.val) {
-            // 左右子树不匹配，不对称，返回false
+            // left == null || right == null -> 左右子树其中一个为null，直接不对称
+            // left.val != right.val -> 左右子树都存在，但值不同，所以不匹配
             return false;
         } else {
+            // 上一个`else if`已经判断过值不相等了，所以这里可以不用再判断了
             // 继续比较左右子树的 外侧(left.left, right.right) 和 内侧(left.right, right.left) 是否对称
+            // KEY: 左右子树匹配的点在第一个`if`（以只有一根节点的二叉树代入思考，我们其实根本没处理到判断左右子节点的值是否相等）
             return check(left.left, right.right) && check(left.right, right.left);
         }
     }

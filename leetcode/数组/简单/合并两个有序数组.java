@@ -2,10 +2,10 @@
  * @Author: kaic
  * @Date: 2022-10-29 13:15:37
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-30 20:51:41
+ * @LastEditTime: 2023-04-18 23:15:34
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
-package leetcode.数组;
+package leetcode.数组.简单;
 
 import java.util.Arrays;
 

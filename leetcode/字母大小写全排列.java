@@ -1,4 +1,12 @@
+/*
+ * @Author: kaic
+ * @Date: 2022-10-30 23:04:30
+ * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2023-04-19 10:03:51
+ * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
 package leetcode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +37,10 @@ public class 字母大小写全排列 {
             return list;
         }
 
+        // 继续遍历
         dfs(index + 1, new StringBuilder(sb).append(arr[index]));
 
-        // 字母
+        // 回溯的时候判断字母大小写
         if (arr[index] >= 'a') {
             dfs(index + 1, new StringBuilder(sb).append((char) (arr[index] - 32)));
         } else if (arr[index] >= 'A') {

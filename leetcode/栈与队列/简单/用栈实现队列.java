@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-12-06 22:09:48
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-12-08 16:40:14
+ * @LastEditTime: 2023-04-19 09:36:04
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.栈与队列.简单;
@@ -10,7 +10,7 @@ package leetcode.栈与队列.简单;
 import java.util.Stack;
 
 /**
- * 232. 用栈实现队列
+ * 232. 用栈实现队列 - 两个栈实现队列
  * 
  * 简单
  * 
@@ -19,7 +19,11 @@ import java.util.Stack;
 public class 用栈实现队列 {
 
     public static void main(String[] args) {
-        new MyQueue();
+        MyQueue queue = new MyQueue();
+        queue.push(33);
+        queue.push(3);
+        System.out.println(queue.pop());
+        System.out.println(queue.pop());
     }
 }
 
@@ -55,11 +59,13 @@ class MyQueue {
     }
 
     private void dumpStackA() {
-        if (!stackOut.isEmpty()) {
-            return;
-        }
-        while (!stackIn.isEmpty()) {
-            stackOut.push(stackIn.pop());
+        // 每次 pop 或 peek 时，
+        // 若输出栈为空则将输入栈的全部数据依次弹出并压入输出栈，
+        // 这样输出栈从栈顶往栈底的顺序就是队列从队首往队尾的顺序。
+        if (stackOut.isEmpty()) {
+            while (!stackIn.isEmpty()) {
+                stackOut.push(stackIn.pop());
+            }
         }
     }
 }

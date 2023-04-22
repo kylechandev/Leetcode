@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-30 17:09:42
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-18 22:59:06
+ * @LastEditTime: 2023-04-19 09:43:25
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -62,8 +62,7 @@ public class MergeSort {
     private void merge(int[] nums, int low, int mid, int high) {
         // 合并方式一：
         for (int i = 0; i < nums.length; i++) {
-            // 先把 nums[lo..hi] 复制到辅助数组中
-            // 以便合并后的结果能够直接存入 nums
+            // 先把 nums[lo..hi] 复制到辅助数组中，以便合并后的结果能够直接存入 nums
             temp[i] = nums[i];
         }
         // 双指针法合并
