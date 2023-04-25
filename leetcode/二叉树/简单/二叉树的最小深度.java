@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-26 09:21:53
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 14:24:54
+ * @LastEditTime: 2023-04-23 23:31:42
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.简单;
@@ -26,7 +26,9 @@ import leetcode.二叉树.TreeNode;
 public class 二叉树的最小深度 {
 
     /**
-     * 层序遍历（广度优先搜索）
+     * 层序遍历（广度优先搜索） - 性能更好！
+     * 
+     * 求最小深度类似于最短路径了，使用BFS的效率更高一些
      */
     public static int minDepth(TreeNode root) {
         // 创建一个列表（存放一行的节点）

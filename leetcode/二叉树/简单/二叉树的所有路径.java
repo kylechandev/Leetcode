@@ -29,7 +29,10 @@ public class 二叉树的所有路径 {
         List<Integer> path = new ArrayList<>();
         List<String> result = new ArrayList<>();
 
-        transval(root, path, result);
+        if (root != null) {
+            transval(root, path, result);
+        }
+
         return result;
     }
 
@@ -41,10 +44,6 @@ public class 二叉树的所有路径 {
      * @param result 所有路径结果集合
      */
     private static void transval(TreeNode root, List<Integer> path, List<String> result) {
-        if (root == null) {
-            return;
-        }
-
         // 根
         // 写在终止条件前，让最后一个叶子节点能够添加进来
         path.add(root.val);
@@ -54,23 +53,21 @@ public class 二叉树的所有路径 {
         if (root.left == null && root.right == null) {
             // 遍历到叶子节点时，表示一条路径已经遍历完成了，此时将`路径`添加到结果集合中
             result.add(pathConvert(path));
-
-            // return;
         }
 
-        // if (root.left != null) {
-            // 继续遍历左节点
+        // 继续遍历左节点
+        if (root.left != null) {
             transval(root.left, path, result);
             // 回溯
-            // path.remove(path.size() - 1);
-        // }
+            path.remove(path.size() - 1);
+        }
 
-        // if (root.right != null) {
-            // 继续遍历右节点
+        // 继续遍历右节点
+        if (root.right != null) {
             transval(root.right, path, result);
             // 回溯
             path.remove(path.size() - 1);
-        // }
+        }
     }
 
     private static String pathConvert(List<Integer> path) {
@@ -78,7 +75,7 @@ public class 二叉树的所有路径 {
     }
 
     /**
-     * 迭代法
+     * 迭代法 - 效率差
      */
     public static List<String> binaryTreePaths2(TreeNode root) {
         List<String> result = new ArrayList<>();
@@ -112,6 +109,7 @@ public class 二叉树的所有路径 {
                     stack.push(node.left);
                     stack.push(path + "->" + node.left.val);
                 }
+                // 以上，先左先右都是可以的（以上先右后左，是以`二叉树先序遍历`为基础扩展的）
             }
         }
 

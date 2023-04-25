@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2023-04-20 23:32:21
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-22 09:42:08
+ * @LastEditTime: 2023-04-25 12:59:29
  * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.回溯算法.中等;
@@ -47,7 +47,7 @@ public class 分割回文串 {
     }
 
     /**
-     * DFS
+     * DFS - 子集型回溯
      * 
      * @param s          原始待分割的字符串
      * @param list       本次分割结果

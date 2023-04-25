@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-14 21:13:14
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-25 09:54:35
+ * @LastEditTime: 2023-04-23 13:37:36
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.遍历;
@@ -38,7 +38,9 @@ public class 后序 {
     }
 
     /**
-     * 迭代解法
+     * 迭代解法 - 通过先序反转
+     * 
+     * 直接迭代，参考：https://leetcode.cn/problems/binary-tree-postorder-traversal/solutions/431066/er-cha-shu-de-hou-xu-bian-li-by-leetcode-solution/comments/1194730
      */
     public static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
@@ -52,6 +54,7 @@ public class 后序 {
             TreeNode treeNode = stack.pop();
             result.add(treeNode.val);
 
+            // 先序调准左右顺序
             TreeNode left = treeNode.left;
             if (left != null) {
                 stack.push(left);

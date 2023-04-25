@@ -2,14 +2,12 @@
  * @Author: kaic
  * @Date: 2022-11-25 16:26:34
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 09:11:09
+ * @LastEditTime: 2023-04-23 14:49:33
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.简单;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
 
 import leetcode.二叉树.TreeNode;
@@ -56,13 +54,9 @@ public class 二叉树的最大深度 {
             // 当前行的长度
             int lineLength = queue.size();
 
-            // 表示每行
-            List<Integer> line = new ArrayList<>();
-
             // 读取这一行的所有元素
             for (int i = 0; i < lineLength; i++) {
                 TreeNode treeNode = queue.poll();
-                line.add(treeNode.val);
 
                 // 开始入队列的左右子节点
                 TreeNode left = treeNode.left;

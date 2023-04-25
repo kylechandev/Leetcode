@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-26 13:36:32
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-26 13:58:01
+ * @LastEditTime: 2023-04-23 13:50:30
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.简单;
@@ -26,7 +26,7 @@ import leetcode.二叉树.TreeNode;
 public class 相同的树 {
 
     /**
-     * 迭代法
+     * 迭代法 - 广度优先BFS
      */
     public static boolean isSameTree(TreeNode p, TreeNode q) {
         if ((p == null && q != null) || (p != null && q == null)) {
@@ -63,7 +63,7 @@ public class 相同的树 {
     }
 
     /**
-     * 递归法
+     * 递归法 - 深度优先DFS
      */
     public static boolean isSameTree2(TreeNode p, TreeNode q) {
         // 递归结束条件
