@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2023-04-25 10:12:57
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-25 10:42:09
+ * @LastEditTime: 2023-04-25 13:07:05
  * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数学.中等;
@@ -48,7 +48,9 @@ public class 子集 {
     }
 
     /**
-     * 站在 输入 的角度思考
+     * 站在 输入 的角度思考（选 还是 不选）
+     * 
+     * https://www.bilibili.com/video/BV1mG4y1A7Gu
      */
     private void dfs(int cur, int[] nums) {
         // 原序列的每个位置在答案序列中的状态有 被选中 和 不被选中 两种
@@ -71,6 +73,7 @@ public class 子集 {
 
     /**
      * 站在 答案 的角度思考
+     * https://www.bilibili.com/video/BV1mG4y1A7Gu
      * 
      * 也就是每个数都选
      */

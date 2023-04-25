@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2023-04-20 23:32:21
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-25 12:59:29
+ * @LastEditTime: 2023-04-25 13:09:32
  * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.回溯算法.中等;
@@ -47,29 +47,30 @@ public class 分割回文串 {
     }
 
     /**
-     * DFS - 子集型回溯
+     * DFS - 子集型回溯 - 站在 答案 的角度思考
+     * https://www.bilibili.com/video/BV1mG4y1A7Gu
      * 
      * @param s          原始待分割的字符串
-     * @param list       本次分割结果
+     * @param path       本次分割结果
      * @param startIndex 从哪个位置开始
      */
-    private void dfs(String s, ArrayList<String> list, int startIndex) {
+    private void dfs(String s, ArrayList<String> path, int startIndex) {
         // 递归终止条件 - DFS
-        if (startIndex >= s.length()) {
+        if (startIndex == s.length()) {
             // 找到一个分割结果了
-            result.add(new ArrayList<>(list));
+            result.add(new ArrayList<>(path));
             return;
         }
 
         // 单层搜索逻辑
-        for (int end = startIndex; end < s.length(); end++) {
+        for (int end = startIndex; end < s.length(); end++) { // 枚举 end 作为子串的结束部分
             if (isPalindroom(s, startIndex, end)) {
-                // 添加当前回文串到 分割list 中
-                list.add(s.substring(startIndex, end + 1));
+                // 添加当前回文串到 分割 path 中
+                path.add(s.substring(startIndex, end + 1));
                 // 开始递归
-                dfs(s, list, end + 1); // 从下一个位置开始继续分割
+                dfs(s, path, end + 1); // 从下一个位置开始继续分割
                 // 回溯，撤销上一次操作，从而继续for循环寻找更长的回文串
-                list.remove(list.size() - 1);
+                path.remove(path.size() - 1);
             }
         }
     }
