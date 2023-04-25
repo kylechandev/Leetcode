@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2023-04-25 13:12:02
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-25 13:35:03
+ * @LastEditTime: 2023-04-25 13:36:04
  * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数学.中等;
@@ -55,6 +55,8 @@ public class 组合 {
         // 剪枝
         int d = k - path.size(); // 还需要的个数d = 目标个数k - 已确认的个数`path.size()`
         if (i < d) { // 此时没法选够 k 个数了（i表示枚举开始位置，比如i=3，那么此时还有1,2,3三个数可以选择）
+            // 以 n=4, k=2 为举例，
+            // 当枚举到 i=1 的时候，此时只剩下 1 这一个数了，很显然没法满足要求的 k 个数，所有直接 return 剪枝
             return;
         }
 
