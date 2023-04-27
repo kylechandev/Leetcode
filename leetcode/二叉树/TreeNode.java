@@ -39,6 +39,7 @@ public class TreeNode {
     private static TreeNode createBinaryTreeByArray(Integer[] array, int parentIndex) {
         TreeNode treeNode = null;
 
+        // 可以查看 [二叉树的序列化与反序列化.java] 中的反序列化过程，加深对二叉树构造的理解
         if (parentIndex < array.length) {
             Integer value = array[parentIndex];
             if (value != null) {
