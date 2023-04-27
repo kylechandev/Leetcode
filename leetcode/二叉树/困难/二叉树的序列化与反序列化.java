@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2023-04-27 22:05:20
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-27 22:45:18
+ * @LastEditTime: 2023-04-27 22:53:09
  * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.困难;
@@ -15,6 +15,7 @@ import leetcode.二叉树.TreeNode;
 
 /**
  * 297. 二叉树的序列化与反序列化
+ * 本题和 [449. 序列化和反序列化二叉搜索树 - 中等] 一模一样的解法
  * 
  * 困难
  * 
