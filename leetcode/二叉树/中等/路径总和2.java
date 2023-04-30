@@ -1,5 +1,6 @@
 package leetcode.二叉树.中等;
 
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,8 +24,8 @@ import leetcode.二叉树.TreeNode;
  */
 public class 路径总和2 {
 
-    static List<List<Integer>> result = new LinkedList<List<Integer>>();
-    static Map<TreeNode, TreeNode> map = new HashMap<TreeNode, TreeNode>();
+    private final List<List<Integer>> result = new LinkedList<List<Integer>>();
+    private final Map<TreeNode, TreeNode> map = new HashMap<TreeNode, TreeNode>();
 
     /**
      * 迭代 - 广度优先搜索
@@ -32,7 +33,7 @@ public class 路径总和2 {
      * 时间复杂度：O(n^2)
      * 空间复杂度：O(n)
      */
-    public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         result.clear();
         map.clear();
 
@@ -80,7 +81,7 @@ public class 路径总和2 {
      * 
      * @param node 叶子节点
      */
-    private static void getPath(TreeNode node) {
+    private void getPath(TreeNode node) {
         List<Integer> temp = new LinkedList<>();
         while (node != null) {
             // 不断的添加它的父节点，还原路径
@@ -92,17 +93,83 @@ public class 路径总和2 {
     }
 
     /**
-     * 递归 - 深度优先搜索
+     * 递归 - 深度优先搜索DFS
      * 
      * 时间复杂度：O(n^2)
      * 空间复杂度：O(n)
      */
-    public static List<List<Integer>> pathSum2(TreeNode root, int targetSum) {
+    public List<List<Integer>> pathSum2(TreeNode root, int targetSum) {
+        dfs(root, targetSum);
+
         return result;
     }
 
+    /**
+     * Deque表示栈时不要使用 push pop
+     * push 用 offerLast
+     * pop 用 pollLast
+     * 
+     * 因为Deque(双端队列)的 push pop 都是从队头添加/删除，要么你就使用Stack，不用Deque
+     */
+    private final Deque<Integer> path2 = new LinkedList<>();
+
+    private void dfs(TreeNode root, int targetSum) {
+        if (root == null) {
+            return;
+        }
+
+        path2.offerLast(root.val);
+
+        int newTarget = targetSum - root.val;
+
+        if (root.left == null && root.right == null && newTarget == 0) {
+            // 找到了一条路径
+            result.add(new LinkedList<>(path2));
+        }
+
+        // 回溯一次
+        // 是因为始终都会进入递归，然后通过最一开始的 root == null 判断跳出，
+        // 也就是当已经遍历到叶子节点时，还是继续进入递归（虽然此时已经没有意义了），递归这个叶子节点的左右子节点，
+        // 但因为叶子节点的左右子节点肯定都是null，所以必定会 return 掉，也就是递归最后还是出在那个 叶子节点 的位置，
+        // 所以只用回溯一次，把 最后的那个叶子节点 回退即可
+        // （可以画一棵树模拟走一条路就了然了）
+
+        dfs(root.left, newTarget);
+        dfs(root.right, newTarget);
+        path2.pollLast();
+    }
+
+    // 第二种写法
+    private void dfs2(TreeNode root, int targetSum) {
+        path2.offerLast(root.val);
+
+        int newTarget = targetSum - root.val;
+
+        if (root.left == null && root.right == null && newTarget == 0) {
+            // 找到了一条路径
+            result.add(new LinkedList<>(path2));
+        }
+
+        // 回溯两次
+        // 这种情况是当遇到 左右子节点 为空时，就不进入递归了，每次递归的过程中都是确实存在的节点，
+        // 所以每次递归结束后，都需要进行一次回溯
+        // （可以画一棵树模拟走一条路就了然了）
+
+        if (root.left != null) {
+            dfs(root.left, newTarget);
+            path2.pollLast();
+        }
+        if (root.right != null) {
+            dfs(root.right, newTarget);
+            path2.pollLast();
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(
-                pathSum(TreeNode.demo(new Integer[] { 5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1 }), 22));
+        TreeNode treeNode = TreeNode.demo(new Integer[] { 5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1 });
+        int target = 22;
+
+        路径总和2 demo = new 路径总和2();
+        System.out.println(demo.pathSum2(treeNode, target));
     }
 }

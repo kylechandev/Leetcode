@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-28 23:04:11
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-29 11:05:01
+ * @LastEditTime: 2023-04-27 22:55:55
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.中等;
@@ -86,7 +86,7 @@ public class 验证二叉搜索树 {
         // 左
         boolean left = isValidBST2(root.left);
 
-        // 中1
+        // 中 方法1
         // if (maxValue == null || root.val > maxValue) {
         // // 符合递增要求的节点，更新maxValue并继续往后遍历
         // maxValue = root.val;
@@ -94,7 +94,8 @@ public class 验证二叉搜索树 {
         // // 不符合递增要求，说明不是二叉搜索树
         // return false;
         // }
-        // 中2
+
+        // 中 方法2
         if (preNode == null) {
             // 初始化preNode
             preNode = root;
