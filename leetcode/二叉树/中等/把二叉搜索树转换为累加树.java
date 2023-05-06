@@ -1,3 +1,10 @@
+/*
+ * @Author: kaic
+ * @Date: 2022-11-30 11:24:19
+ * @LastEditors: kylechandev kylechan47@gmail.com
+ * @LastEditTime: 2023-05-06 10:58:33
+ * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
+ */
 package leetcode.二叉树.中等;
 
 import leetcode.二叉树.TreeNode;

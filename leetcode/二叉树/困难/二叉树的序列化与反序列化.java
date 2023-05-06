@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2023-04-27 22:05:20
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-27 22:53:09
+ * @LastEditTime: 2023-05-06 10:36:06
  * Copyright (c) 2023 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.二叉树.困难;
@@ -38,6 +38,8 @@ public class 二叉树的序列化与反序列化 {
             return;
         }
 
+        // 按先序遍历进行`序列化`
+
         serializeAns = serializeAns + String.valueOf(root.val) + ",";
 
         dfsS(root.left);
@@ -57,6 +59,8 @@ public class 二叉树的序列化与反序列化 {
             nodeList.remove(0);
             return null;
         }
+
+        // 按先序遍历进行`反序列化`
 
         TreeNode root = new TreeNode(Integer.valueOf(nodeList.get(0)));
         nodeList.remove(0);
