@@ -68,16 +68,16 @@ public class MyQueue33 {
 
     public static void main(String[] args) {
         MyQueue myQueue = new MyQueue(6);
-        myQueue.enqueue(3);
-        myQueue.enqueue(5);
-        myQueue.enqueue(6);
-        myQueue.enqueue(8);
-        myQueue.enqueue(1);
-        myQueue.dequeue();
-        myQueue.dequeue();
-        myQueue.dequeue();
-        myQueue.enqueue(2);
-        myQueue.enqueue(4);
+        myQueue.offer(3);
+        myQueue.offer(5);
+        myQueue.offer(6);
+        myQueue.offer(8);
+        myQueue.offer(1);
+        myQueue.poll();
+        myQueue.poll();
+        myQueue.poll();
+        myQueue.offer(2);
+        myQueue.offer(4);
         myQueue.output();
     }
 }

@@ -15,7 +15,7 @@ import java.util.Queue;
  * 求走出迷宫的最少步数
  * 求走出迷宫的总方法数
  * 
- * 如果要求输出路径，可以再开一个List来保存每条路径，然后输出最短步数的那条路径（就和`visited`同样的位置）
+ * 如果要求输出路径，可以再开一个List来保存每条路径，然后输出最短步数的那条路径（就和visited`同样的位置）
  */
 public class 迷宫 {
 
@@ -48,10 +48,10 @@ public class 迷宫 {
         // 起点位置标记为已访问
         visited[0][0] = 1;
 
-        dfs(maze, 0, 0, 0);
-        System.out.println("总方法数：" + totalWays);
+        // dfs(maze, 0, 0, 0);
+        // System.out.println("总方法数：" + totalWays);
 
-        // bfs(maze, 0, 0);
+        bfs(maze, 0, 0);
 
         return minSteps;
     }

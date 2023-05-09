@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 11:22:09
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-08 20:55:10
+ * @LastEditTime: 2023-05-09 09:26:37
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.栈和队列;
@@ -18,17 +18,17 @@ package 小灰.栈和队列;
  * 判断队列是否已经满
  * 判断队列是否为空
  */
-public class MyQueue {
+public class MyQueue<T> {
 
     // 队列
-    private int[] array;
+    private Object[] array;
     // 对头位置
     private int front;
     // 队尾位置
     private int rear;
 
     MyQueue(int capacity) {
-        this.array = new int[capacity];
+        this.array = new Object[capacity];
     }
 
     /**
@@ -36,7 +36,7 @@ public class MyQueue {
      * 
      * @param data 入队数据
      */
-    public void enqueue(int data) {
+    public void offer(T data) {
         if (isFull()) {
             throw new IllegalStateException();
         }
@@ -48,12 +48,13 @@ public class MyQueue {
     /**
      * 出队
      */
-    public int dequeue() {
+    @SuppressWarnings("unchecked")
+    public T poll() {
         if (isEmpty()) {
             throw new IllegalStateException();
         }
 
-        int data = array[front];
+        T data = (T) array[front];
         front = nextPoint(front);
         return data;
     }
@@ -84,17 +85,17 @@ public class MyQueue {
     }
 
     public static void main(String[] args) {
-        MyQueue myQueue = new MyQueue(6);
-        myQueue.enqueue(3);
-        myQueue.enqueue(5);
-        myQueue.enqueue(6);
-        myQueue.enqueue(8);
-        myQueue.enqueue(1);
-        myQueue.dequeue();
-        myQueue.dequeue();
-        myQueue.dequeue();
-        myQueue.enqueue(2);
-        myQueue.enqueue(4);
+        MyQueue<Integer> myQueue = new MyQueue<>(6);
+        myQueue.offer(3);
+        myQueue.offer(5);
+        myQueue.offer(6);
+        myQueue.offer(8);
+        myQueue.offer(1);
+        myQueue.poll();
+        myQueue.poll();
+        myQueue.poll();
+        myQueue.offer(2);
+        myQueue.offer(4);
         myQueue.output();
     }
 }

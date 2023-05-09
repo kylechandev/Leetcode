@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-07 11:44:36
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-11-08 20:55:22
+ * @LastEditTime: 2023-05-09 09:23:10
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.栈和队列;
@@ -16,16 +16,16 @@ package 小灰.栈和队列;
  * 判断栈满
  * 判断栈空
  */
-public class MyStack {
+public class MyStack<T> {
 
-    private int[] array;
+    private Object[] array;
     // 栈顶
     private int top;
     // 栈底
     private int bottom = -1;
 
     MyStack(int capacity) {
-        this.array = new int[capacity];
+        this.array = new Object[capacity];
     }
 
     /**
@@ -33,7 +33,7 @@ public class MyStack {
      * 
      * @param data 入栈元素
      */
-    public void push(int data) {
+    public void push(T data) {
         if (isFull()) {
             throw new IllegalStateException();
         }
@@ -44,12 +44,13 @@ public class MyStack {
     /**
      * 出栈
      */
-    public int pop() {
+    @SuppressWarnings("unchecked")
+    public T pop() {
         if (isEmpty()) {
             throw new IllegalStateException();
         }
 
-        int data = array[bottom--];
+        T data = (T) array[bottom--];
         return data;
     }
 
@@ -75,7 +76,7 @@ public class MyStack {
     }
 
     public static void main(String[] args) {
-        MyStack myStack = new MyStack(10);
+        MyStack<Integer> myStack = new MyStack<>(10);
         myStack.push(12);
         myStack.push(1);
         myStack.push(2);
