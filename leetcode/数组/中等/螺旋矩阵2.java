@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-12-01 14:45:59
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2022-12-01 15:19:24
+ * @LastEditTime: 2023-05-10 22:55:12
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package leetcode.数组.中等;
@@ -25,42 +25,34 @@ public class 螺旋矩阵2 {
     public int[][] generateMatrix(int n) {
         int[][] result = new int[n][n];
 
-        int i = 0, j = 0;
-        int offset = 1;
-        int start = 0; // 每一圈的起始坐标(start,start)
+        int l = 0, t = 0, r = n - 1, b = n - 1;
+        int num = 1;
+        int target = n * n;
 
-        int count = 1;
-
-        // 圈数
-        int loop = n / 2;
-
-        while (loop-- > 0) {
-            // 上侧
-            for (j = start; j < n - offset; j++) {
-                result[start][j] = count++;
+        while (num <= target) {
+            // left to right
+            for (int i = l; i <= r; i++) {
+                result[t][i] = num++;
             }
+            t++;
 
-            // 右侧
-            for (i = start; i < n - offset; i++) {
-                result[i][j] = count++;
+            // top to bottom
+            for (int i = t; i <= b; i++) {
+                result[i][r] = num++;
             }
+            r--;
 
-            // 下侧
-            for (; j >= offset; j--) {
-                result[i][j] = count++;
+            // right to left
+            for (int i = r; i >= l; i--) {
+                result[b][i] = num++;
             }
+            b--;
 
-            // 左侧
-            for (; i >= offset; i--) {
-                result[i][j] = count++;
+            // bottom to top
+            for (int i = b; i >= t; i--) {
+                result[i][l] = num++;
             }
-
-            offset++;
-            start++;
-        }
-
-        if (n % 2 != 0) {
-            result[start][start] = count;
+            l++;
         }
 
         return result;

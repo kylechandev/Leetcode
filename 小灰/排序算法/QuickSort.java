@@ -2,7 +2,7 @@
  * @Author: kaic
  * @Date: 2022-11-08 22:40:56
  * @LastEditors: kylechandev kylechan47@gmail.com
- * @LastEditTime: 2023-04-18 22:25:53
+ * @LastEditTime: 2023-05-10 20:27:52
  * Copyright (c) 2022 by kylechandev kylechan47@gmail.com, All Rights Reserved. 
  */
 package 小灰.排序算法;
@@ -56,8 +56,8 @@ public class QuickSort {
         }
 
         int partition = partitionV2(array, startIndex, endIndex);
-        quickSort(array, startIndex, partition - 1);
-        quickSort(array, partition + 1, endIndex);
+        quickSortV2(array, startIndex, partition - 1);
+        quickSortV2(array, partition + 1, endIndex);
     }
 
     /**
